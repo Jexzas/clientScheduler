@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("clientScheduler")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d5355e99da09068fc1f0dd2ca333fc2657817e0e")]
 [assembly: System.Reflection.AssemblyProductAttribute("clientScheduler")]
 [assembly: System.Reflection.AssemblyTitleAttribute("clientScheduler")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

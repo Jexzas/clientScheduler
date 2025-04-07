@@ -69,5 +69,15 @@ namespace clientScheduler
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Open Client Editor
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Open Appointment Editor
+        }
     }
 }
