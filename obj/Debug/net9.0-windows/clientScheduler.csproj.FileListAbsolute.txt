@@ -43,3 +43,5 @@ D:\Users\jdrma\Documents\clientScheduler\obj\Debug\net9.0-windows\clientSchedule
 D:\Users\jdrma\Documents\clientScheduler\obj\Debug\net9.0-windows\clientSc.50FB392E.Up2Date
 D:\Users\jdrma\Documents\clientScheduler\obj\Debug\net9.0-windows\clientScheduler.genruntimeconfig.cache
 D:\Users\jdrma\Documents\clientScheduler\obj\Debug\net9.0-windows\ref\clientScheduler.dll
+D:\Users\jdrma\Documents\clientScheduler\obj\Debug\net9.0-windows\clientScheduler.clientEditor.resources
+D:\Users\jdrma\Documents\clientScheduler\obj\Debug\net9.0-windows\clientScheduler.AppointmentEditor.resources

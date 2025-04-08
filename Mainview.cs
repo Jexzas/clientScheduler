@@ -73,11 +73,15 @@ namespace clientScheduler
         private void button1_Click(object sender, EventArgs e)
         {
             // Open Client Editor
+            clientEditor clientEditor = new clientEditor();
+            clientEditor.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             // Open Appointment Editor
+            AppointmentEditor appointmentEditor = new AppointmentEditor();
+            appointmentEditor.ShowDialog();
         }
     }
 }
