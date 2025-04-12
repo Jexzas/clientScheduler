@@ -45,3 +45,6 @@ D:\Users\jdrma\Documents\clientScheduler\obj\Debug\net9.0-windows\clientSchedule
 D:\Users\jdrma\Documents\clientScheduler\obj\Debug\net9.0-windows\ref\clientScheduler.dll
 D:\Users\jdrma\Documents\clientScheduler\obj\Debug\net9.0-windows\clientScheduler.clientEditor.resources
 D:\Users\jdrma\Documents\clientScheduler\obj\Debug\net9.0-windows\clientScheduler.AppointmentEditor.resources
+E:\Programming\clientScheduler\obj\Debug\net9.0-windows\clientScheduler.AppointmentEditor.resources
+E:\Programming\clientScheduler\obj\Debug\net9.0-windows\clientScheduler.clientEditor.resources
+E:\Programming\clientScheduler\obj\Debug\net9.0-windows\clientScheduler.sourcelink.json

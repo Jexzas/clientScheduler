@@ -17,9 +17,10 @@ namespace clientScheduler
         public string contact {  get; set; }
         public string url { get; set; }
         public string type { get; set; }
+        public DateTime date { get; set; }
         public DateTime start { get; set; }
         public DateTime end { get; set; }
-        public Appointment(int appId, int customerID, int userId, string title, string description, string contact, string url, string type, DateTime start, DateTime end) {
+        public Appointment(int appId, int customerID, int userId, string title, string description, string contact, string url, string type, DateTime date, DateTime start, DateTime end) {
             this.appID = appId;
             this.customerID = customerID;
             this.userId = userId;
@@ -28,6 +29,7 @@ namespace clientScheduler
             this.contact    = contact;
             this.type = type;
             this.url = url;
+            this.date = date;
             this.start = start;
             this.end = end;
 
