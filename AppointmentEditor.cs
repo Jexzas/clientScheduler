@@ -2,20 +2,78 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace clientScheduler
 {
-    public partial class AppointmentEditor: Form
+    public partial class AppointmentEditor : Form
     {
         public AppointmentEditor()
         {
             InitializeComponent();
+            
             dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            monthsView();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void monthsView()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                var col = new DataGridViewTextBoxColumn();
+                col.Name = "col" + i;
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns.Add(col);
+                dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+
+            // Fill 4 rows (12 months / 3 columns = 4 rows)
+            string[] months = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
+            int monthIndex = 0;
+
+            for (int row = 0; row < 4; row++)
+            {
+                dataGridView1.Rows.Add();
+                for (int col = 0; col < 3; col++)
+                {
+                    if (monthIndex < 12)
+                    {
+                        dataGridView1.Rows[row].Cells[col].Value = months[monthIndex];
+                        monthIndex++;
+                    }
+                }
+            }
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.ColumnHeadersVisible = false;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                row.Height = 45;
+            }
+            dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.ReadOnly = true;
+            dataGridView1.AllowUserToAddRows = false;
+        }
+
+        private void monthView(int month)
+        {
+            DateTime chosen = new DateTime(DateTime.Now.Year, month, 1);
+            string[] days = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+            foreach (string day in days)
+            {
+                dataGridView1.Columns.Add(day, day);
+                dataGridView1.Columns[day].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
         }
     }
 }

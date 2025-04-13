@@ -15,13 +15,19 @@ namespace clientScheduler
 {
     public partial class Mainview : Form
     {
+        public TimeZoneInfo est = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
         private string username { get; set; }
         private string lang { get; set; }
         private int userID { get; set; }
         private BindingList<Appointment> MyAppointments { get; set; }
         private MySqlConnection connection { get; set; }
+
         public Mainview(string username, string lang, int userID)
         {
+            TimeZoneInfo localZone = TimeZoneInfo.Local;
+            TimeSpan localOffset = localZone.GetUtcOffset(DateTime.Now);
+            TimeSpan estOffset = est.GetUtcOffset(DateTime.Now);
+            TimeSpan offsetDifference = estOffset - localOffset;
             this.lang = lang;
             this.userID = userID;
             this.username = username;
@@ -29,7 +35,7 @@ namespace clientScheduler
             connection = Program.connect();
             InitializeComponent();
             label2.Text = username;
-            getYourAppts();
+            getYourAppts(offsetDifference);
             populateAppts();
         }
 
@@ -38,7 +44,7 @@ namespace clientScheduler
             Application.Exit();
         }
 
-        private void getYourAppts()
+        private void getYourAppts(TimeSpan offset)
         {
             connection.Open();
             MySqlCommand command = connection.CreateCommand();
@@ -55,9 +61,9 @@ namespace clientScheduler
                     reader.GetString("contact"),
                     reader.GetString("url"),
                     reader.GetString("type"),
-                    reader.GetDateTime("start"),
-                    reader.GetDateTime("start"),
-                    reader.GetDateTime("end")
+                    reader.GetDateTime("start").Subtract(offset),
+                    reader.GetDateTime("start").Subtract(offset),
+                    reader.GetDateTime("end").Subtract(offset)
                     );
                 MyAppointments.Add(newApp);
             }
