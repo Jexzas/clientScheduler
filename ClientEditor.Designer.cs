@@ -28,10 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "clientEditor";
+            SuspendLayout();
+            // 
+            // clientEditor
+            // 
+            AutoScaleDimensions = new SizeF(10F, 34F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1143, 1020);
+            Font = new Font("Dubai", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Margin = new Padding(5, 7, 5, 7);
+            Name = "clientEditor";
+            Text = "clientEditor";
+            ResumeLayout(false);
         }
 
         #endregion

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             label1 = new Label();
             dataGridView1 = new DataGridView();
             label2 = new Label();
@@ -51,10 +52,19 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(128, 255, 255);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 20F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.Location = new Point(42, 113);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(692, 497);
+            dataGridView1.Size = new Size(692, 430);
             dataGridView1.TabIndex = 1;
+            dataGridView1.CellDoubleClick += openMonth;
             // 
             // label2
             // 
@@ -108,6 +118,7 @@
             Controls.Add(label1);
             Name = "AppointmentEditor";
             Text = "AppointmentEditor";
+            Load += AppointmentEditor_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);

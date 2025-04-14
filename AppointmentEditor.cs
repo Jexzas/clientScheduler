@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace clientScheduler
 {
@@ -17,7 +18,7 @@ namespace clientScheduler
         public AppointmentEditor()
         {
             InitializeComponent();
-            
+
             dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
             monthsView();
         }
@@ -29,6 +30,8 @@ namespace clientScheduler
 
         private void monthsView()
         {
+            dataGridView1.DataSource = null;
+            dataGridView1.Rows.Clear();
             for (int i = 0; i < 3; i++)
             {
                 var col = new DataGridViewTextBoxColumn();
@@ -58,22 +61,33 @@ namespace clientScheduler
             dataGridView1.ColumnHeadersVisible = false;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                row.Height = 45;
+                row.Height = 105;
             }
             dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.ReadOnly = true;
             dataGridView1.AllowUserToAddRows = false;
         }
 
-        private void monthView(int month)
+        private void monthView(string month)
         {
-            DateTime chosen = new DateTime(DateTime.Now.Year, month, 1);
+            Int32 year = DateTime.Now.Year;
+            DateTime chosen = new DateTime(Array.IndexOf(CultureInfo.CurrentCulture.DateTimeFormat.MonthNames, month) +1, year, 1);
             string[] days = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
             foreach (string day in days)
             {
                 dataGridView1.Columns.Add(day, day);
                 dataGridView1.Columns[day].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
+        }
+
+        private void openMonth(object sender, DataGridViewCellEventArgs e)
+        {
+            monthView(dataGridView1.SelectedCells[0].Value.ToString());
+        }
+
+        private void AppointmentEditor_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
