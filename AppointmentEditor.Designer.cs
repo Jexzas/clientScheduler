@@ -28,13 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             label1 = new Label();
             dataGridView1 = new DataGridView();
             label2 = new Label();
             label3 = new Label();
             dataGridView2 = new DataGridView();
             label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
@@ -52,15 +54,15 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(128, 255, 255);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 20F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.Location = new Point(42, 113);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(128, 255, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 20F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView1.Location = new Point(42, 166);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(692, 430);
             dataGridView1.TabIndex = 1;
@@ -105,11 +107,34 @@
             label4.TabIndex = 5;
             label4.Text = "Appointment Details";
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 20F);
+            label5.Location = new Point(235, 114);
+            label5.Name = "label5";
+            label5.Size = new Size(102, 37);
+            label5.TabIndex = 6;
+            label5.Text = "Month:";
+            label5.Click += label5_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 20F);
+            label6.Location = new Point(403, 114);
+            label6.Name = "label6";
+            label6.Size = new Size(82, 37);
+            label6.TabIndex = 7;
+            label6.Text = "None";
+            // 
             // AppointmentEditor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1549, 908);
+            Controls.Add(label6);
+            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(dataGridView2);
             Controls.Add(label3);
@@ -133,5 +158,7 @@
         private Label label3;
         private DataGridView dataGridView2;
         private Label label4;
+        private Label label5;
+        private Label label6;
     }
 }
