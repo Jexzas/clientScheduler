@@ -61,10 +61,15 @@ namespace clientScheduler
                     reader.GetString("description"),
                     reader.GetString("contact"),
                     reader.GetString("url"),
+                    reader.GetString("location"),
                     reader.GetString("type"),
                     reader.GetDateTime("start").Subtract(offset),
                     reader.GetDateTime("start").Subtract(offset),
-                    reader.GetDateTime("end").Subtract(offset)
+                    reader.GetDateTime("end").Subtract(offset),
+                    reader.GetDateTime("createDate").Subtract(offset),
+                    reader.GetString("createdBy"),
+                    reader.GetDateTime("lastUpdate").Subtract(offset),
+                    reader.GetString("createdBy")
                     );
                 MyAppointments.Add(newApp);
             }

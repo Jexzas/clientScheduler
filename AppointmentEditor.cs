@@ -170,6 +170,7 @@ namespace clientScheduler
             DateTime againChosen = new DateTime(Int32.Parse(label9.Text), Array.IndexOf(CultureInfo.CurrentCulture.DateTimeFormat.MonthNames, dataGridView1.SelectedCells[0].Value.ToString()) + 1, 1);
             showDay(dataGridView3.SelectedCells[0].Value.ToString() ?? "", againChosen);
 
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -198,11 +199,16 @@ namespace clientScheduler
                         reader.GetString("description"),
                         reader.GetString("contact"),
                         reader.GetString("url"),
+                        reader.GetString("location"),
                         reader.GetString("type"),
                         reader.GetDateTime("start").Subtract(Mainview.OffsetDifference),
                         reader.GetDateTime("start").Subtract(Mainview.OffsetDifference),
-                        reader.GetDateTime("end").Subtract(Mainview.OffsetDifference)
-                        );
+                        reader.GetDateTime("end").Subtract(Mainview.OffsetDifference),
+                        reader.GetDateTime("createDate").Subtract(Mainview.OffsetDifference),
+                        reader.GetString("createdBy"),
+                        reader.GetDateTime("lastUpdate").Subtract(Mainview.OffsetDifference),
+                        reader.GetString("createdBy")
+                    );
                     availableAppointments.Add(newApp);
                 }
                 thisConnect.Close();
@@ -222,6 +228,22 @@ namespace clientScheduler
         {
             // back a year
             monthsView((Int32.Parse(label9.Text) - 1).ToString());
+
+        }
+
+        private void rowSelected(object sender, EventArgs e)
+        {
+            Appointment thisAppointment = dataGridView2.SelectedRows[0].DataBoundItem as Appointment;
+
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
 
         }
     }

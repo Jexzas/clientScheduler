@@ -16,15 +16,23 @@ namespace clientScheduler
         public string description { get; set; }
         public string contact {  get; set; }
         public string url { get; set; }
+        public string location { get; set; }
         public string type { get; set; }
         public DateTime date { get; set; }
         public DateTime start { get; set; }
         public DateTime end { get; set; }
-        public Appointment(int appId, int customerID, int userId, string title, string description, string contact, string url, string type, DateTime date, DateTime start, DateTime end) {
+        public DateTime createDate { get; set; }
+        public string createdBy { get; set; }
+        public DateTime lastUpdate {  get; set; }
+        public string updatedBy {  get; set; }
+        public Appointment(int appId, int customerID, int userId, string title, string description, string contact, string url, string location, string type, DateTime date, DateTime start, DateTime end,
+            DateTime createDate, string createdBy, DateTime lastUpdate, string updatedBy
+            ) {
             this.appID = appId;
             this.customerID = customerID;
             this.userId = userId;
             this.title = title;
+            this.location = location;
             this.description = description;
             this.contact    = contact;
             this.type = type;
@@ -32,7 +40,10 @@ namespace clientScheduler
             this.date = date;
             this.start = start;
             this.end = end;
-
+            this.createDate = createDate;
+            this.createdBy = createdBy;
+            this.lastUpdate = lastUpdate;
+            this.updatedBy = updatedBy;
         }
     }
 }
