@@ -21,13 +21,14 @@ namespace clientScheduler
         private int userID { get; set; }
         private BindingList<Appointment> MyAppointments { get; set; }
         private MySqlConnection connection { get; set; }
+        public static TimeSpan OffsetDifference;
 
         public Mainview(string username, string lang, int userID)
         {
             TimeZoneInfo localZone = TimeZoneInfo.Local;
             TimeSpan localOffset = localZone.GetUtcOffset(DateTime.Now);
             TimeSpan estOffset = est.GetUtcOffset(DateTime.Now);
-            TimeSpan offsetDifference = estOffset - localOffset;
+            OffsetDifference = estOffset - localOffset;
             this.lang = lang;
             this.userID = userID;
             this.username = username;
@@ -35,7 +36,7 @@ namespace clientScheduler
             connection = Program.connect();
             InitializeComponent();
             label2.Text = username;
-            getYourAppts(offsetDifference);
+            getYourAppts(OffsetDifference);
             populateAppts();
         }
 
