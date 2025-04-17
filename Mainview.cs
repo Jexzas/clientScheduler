@@ -80,9 +80,9 @@ namespace clientScheduler
         {
             dataGridView1.DataSource = this.MyAppointments;
             dataGridView1.AutoGenerateColumns = true;
-            dataGridView1.Columns[8].DefaultCellStyle.Format = "MM/dd/yyyy";
-            dataGridView1.Columns[9].DefaultCellStyle.Format = "hh:mm:ss tt";
+            dataGridView1.Columns[9].DefaultCellStyle.Format = "MM/dd/yyyy";
             dataGridView1.Columns[10].DefaultCellStyle.Format = "hh:mm:ss tt";
+            dataGridView1.Columns[11].DefaultCellStyle.Format = "hh:mm:ss tt";
 
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }

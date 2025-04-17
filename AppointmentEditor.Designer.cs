@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             label1 = new Label();
             dataGridView1 = new DataGridView();
             label2 = new Label();
@@ -96,14 +96,14 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(128, 255, 255);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 20F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(128, 255, 255);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 20F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.Location = new Point(42, 166);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(692, 430);
@@ -174,14 +174,14 @@
             // dataGridView3
             // 
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(128, 255, 255);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 20F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridView3.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(128, 255, 255);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 20F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dataGridView3.DefaultCellStyle = dataGridViewCellStyle4;
             dataGridView3.Location = new Point(42, 166);
             dataGridView3.Name = "dataGridView3";
             dataGridView3.Size = new Size(692, 430);
@@ -398,6 +398,7 @@
             // 
             // dateTimePicker1
             // 
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.Location = new Point(1258, 370);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(254, 23);
@@ -425,6 +426,7 @@
             // 
             // dateTimePicker2
             // 
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
             dateTimePicker2.Location = new Point(1258, 435);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(254, 23);
@@ -480,6 +482,7 @@
             // dateTimePicker4
             // 
             dateTimePicker4.Enabled = false;
+            dateTimePicker4.Format = DateTimePickerFormat.Custom;
             dateTimePicker4.Location = new Point(1258, 630);
             dateTimePicker4.Name = "dateTimePicker4";
             dateTimePicker4.Size = new Size(254, 23);
