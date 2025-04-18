@@ -97,7 +97,7 @@ namespace clientScheduler
         private void button2_Click(object sender, EventArgs e)
         {
             // Open Appointment Editor
-            AppointmentEditor appointmentEditor = new AppointmentEditor();
+            AppointmentEditor appointmentEditor = new AppointmentEditor(this.username);
             appointmentEditor.ShowDialog();
         }
     }

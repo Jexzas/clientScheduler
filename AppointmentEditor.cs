@@ -19,17 +19,36 @@ namespace clientScheduler
 {
     public partial class AppointmentEditor : Form
     {
-        public AppointmentEditor()
+        string username { get; set; }
+        public AppointmentEditor(string username)
         {
             InitializeComponent();
+            numericUpDown3.Maximum = GetUser();
+            this.username = username;
             label9.Text = DateTime.Now.Year.ToString();
             dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
             monthsView(DateTime.Now.Year.ToString());
             dateTimePicker1.CustomFormat = "MM/dd/yyyy hh:mm:ss";
             dateTimePicker2.CustomFormat = "MM/dd/yyyy hh:mm:ss";
             dateTimePicker4.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            clearFields();
         }
 
+        public static int GetUser()
+        {
+            MySqlConnection thisConnect = Program.connect();
+            thisConnect.Open();
+            MySqlCommand thisCommand = thisConnect.CreateCommand();
+            thisCommand.CommandText = "SELECT max(userId) FROM user;";
+            MySqlDataReader reader = thisCommand.ExecuteReader();
+            int maxUser = 1;
+            while (reader.Read())
+            {
+                maxUser = reader.GetInt32("max(userId)");
+            }
+            thisConnect.Close();
+            return maxUser;
+        }
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -218,7 +237,7 @@ namespace clientScheduler
             }
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView2.DataSource = availableAppointments;
-            dataGridView2.SelectedRows[0].Selected = false;
+            if (dataGridView2.SelectedRows.Count > 0) dataGridView2.SelectedRows[0].Selected = false;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -257,12 +276,114 @@ namespace clientScheduler
 
         private void label21_Click(object sender, EventArgs e)
         {
-
+            // do nothing
         }
 
         private void label22_Click(object sender, EventArgs e)
         {
+            // do nothing
+        }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            clearFields();
+            
+        }
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // create or update 
+            // check for existing appointment
+            textBox8.Text = this.username;
+            MySqlConnection thisConnect = Program.connect();
+            thisConnect.Open();
+            string method = "new"; // new or edit
+            Int32 testCase = (Int32)numericUpDown1.Value;
+            MySqlCommand tryCommand = thisConnect.CreateCommand();
+            tryCommand.CommandText = $"SELECT appointmentId FROM appointment WHERE appointmentId = {testCase}";
+            MySqlDataReader reader = tryCommand.ExecuteReader();
+            while(reader.Read())
+            {
+                if (reader.GetInt32(0) == testCase)
+                {
+                    method = "edit";
+                } else
+                {
+                    method = "new";
+                }
+                
+            }
+            thisConnect.Close();
+            thisConnect.Open();
+            Appointment newAppointment = new Appointment(
+                    testCase,
+                    (int)numericUpDown2.Value,
+                    (int)numericUpDown3.Value,
+                    textBox1.Text,
+                    textBox2.Text,
+                    textBox3.Text,
+                    textBox4.Text,
+                    textBox5.Text,
+                    textBox6.Text,
+                    dateTimePicker1.Value.Date,
+                    dateTimePicker1.Value,
+                    dateTimePicker2.Value,
+                    DateTime.Now,
+                    textBox7.Text,
+                    DateTime.Now,
+                    textBox8.Text
+                    );
+            MySqlCommand newEntry = thisConnect.CreateCommand();
+
+            if (method == "new")
+            {
+                newAppointment.createdBy = this.username;
+                newEntry.CommandText = $"INSERT INTO appointment (appointmentId, customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES ({newAppointment.appID}, {newAppointment.customerID}, {newAppointment.userId}, {newAppointment.title}, {newAppointment.description}, {newAppointment.location}, {newAppointment.contact}, {newAppointment.type}, {newAppointment.url}, {newAppointment.start.Add(Mainview.OffsetDifference)}, {newAppointment.end.Add(Mainview.OffsetDifference)}, {newAppointment.createDate.Add(Mainview.OffsetDifference)}, {newAppointment.createdBy}, {newAppointment.lastUpdate.Add(Mainview.OffsetDifference)}, {newAppointment.updatedBy});";
+            }
+            else if (method == "edit")
+            {
+                newAppointment.createDate = dateTimePicker3.Value;
+                newEntry.CommandText = $"DELETE FROM appointment WHERE appointmentId = {testCase}; INSERT INTO appointment (appointmentId, customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES ({newAppointment.appID}, {newAppointment.customerID}, {newAppointment.userId}, {newAppointment.title}, {newAppointment.description}, {newAppointment.location}, {newAppointment.contact}, {newAppointment.type}, {newAppointment.url}, {newAppointment.start.Add(Mainview.OffsetDifference)}, {newAppointment.end.Add(Mainview.OffsetDifference)}, {newAppointment.createDate.Add(Mainview.OffsetDifference)}, {newAppointment.createdBy}, {newAppointment.lastUpdate.Add(Mainview.OffsetDifference)}, {newAppointment.updatedBy});";
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong. Appointment not created or altered.");
+            }
+
+            newEntry.ExecuteNonQuery();
+            thisConnect.Close();
+        }
+
+        private void clearFields()
+        {
+            // clear fields
+            // increment the appointment id 
+            if (dataGridView2.SelectedRows.Count > 0) { dataGridView2.SelectedRows[0].Selected = false; }
+            ;
+            numericUpDown1.Value = 0;
+            numericUpDown2.Value = 0;
+            numericUpDown3.Value = 0;
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
+            dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker2.Value = DateTime.Now;
+            dateTimePicker3.Value = DateTime.Now;
+            textBox7.Text = "";
+            textBox8.Text = "";
+            dateTimePicker4.Value = DateTime.Now;
+            MySqlConnection thisConnect = Program.connect();
+            thisConnect.Open();
+            MySqlCommand command = thisConnect.CreateCommand();
+            command.CommandText = "SELECT max(appointmentId) FROM appointment";
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                numericUpDown1.Value = reader.GetInt32(0) + 1;
+            }
+            thisConnect.Close();
         }
     }
 }

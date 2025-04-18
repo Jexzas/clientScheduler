@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             label1 = new Label();
             dataGridView1 = new DataGridView();
             label2 = new Label();
@@ -75,6 +75,8 @@
             dateTimePicker4 = new DateTimePicker();
             label24 = new Label();
             textBox8 = new TextBox();
+            button4 = new Button();
+            button5 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
@@ -96,14 +98,14 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(128, 255, 255);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 20F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(128, 255, 255);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 20F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.Location = new Point(42, 166);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(692, 430);
@@ -174,14 +176,14 @@
             // dataGridView3
             // 
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(128, 255, 255);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 20F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dataGridView3.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(128, 255, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 20F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView3.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView3.Location = new Point(42, 166);
             dataGridView3.Name = "dataGridView3";
             dataGridView3.Size = new Size(692, 430);
@@ -253,6 +255,7 @@
             // 
             // numericUpDown1
             // 
+            numericUpDown1.Enabled = false;
             numericUpDown1.Location = new Point(773, 371);
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.ReadOnly = true;
@@ -506,11 +509,36 @@
             textBox8.Size = new Size(176, 23);
             textBox8.TabIndex = 44;
             // 
+            // button4
+            // 
+            button4.Location = new Point(773, 542);
+            button4.Name = "button4";
+            button4.Size = new Size(120, 23);
+            button4.TabIndex = 45;
+            button4.Text = "Clear Fields";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
+            // button5
+            // 
+            button5.BackColor = SystemColors.HotTrack;
+            button5.Font = new Font("Segoe UI", 16F);
+            button5.ForeColor = SystemColors.ButtonHighlight;
+            button5.Location = new Point(995, 770);
+            button5.Name = "button5";
+            button5.Size = new Size(334, 59);
+            button5.TabIndex = 46;
+            button5.Text = "Create or Update Record";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
+            // 
             // AppointmentEditor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1549, 908);
+            Controls.Add(button5);
+            Controls.Add(button4);
             Controls.Add(textBox8);
             Controls.Add(label24);
             Controls.Add(dateTimePicker4);
@@ -616,5 +644,7 @@
         private DateTimePicker dateTimePicker4;
         private Label label24;
         private TextBox textBox8;
+        private Button button4;
+        private Button button5;
     }
 }
