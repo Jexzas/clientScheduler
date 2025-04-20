@@ -48,7 +48,7 @@
               "RelativeDocumentMoniker": "AppointmentEditor.cs",
               "ToolTip": "E:\\Programming\\clientScheduler\\AppointmentEditor.cs",
               "RelativeToolTip": "AppointmentEditor.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAQwC4AAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAAD8BAAAAAAAAAAAwwFgBAAAvAwAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-08T00:56:16.077Z",
               "EditorCaption": ""
@@ -62,8 +62,7 @@
               "ToolTip": "E:\\Programming\\clientScheduler\\AppointmentEditor.cs [Design]",
               "RelativeToolTip": "AppointmentEditor.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T00:47:22.761Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-04-08T00:47:22.761Z"
             },
             {
               "$type": "Document",
@@ -87,8 +86,7 @@
               "RelativeToolTip": "Login.cs",
               "ViewState": "AgIAADEAAAAAAAAAAAAcwHAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T19:40:37.833Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T19:40:37.833Z"
             },
             {
               "$type": "Document",
@@ -100,8 +98,7 @@
               "RelativeToolTip": "Mainview.cs",
               "ViewState": "AgIAAEcAAAAAAAAAAAAAwF0AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T18:09:58.717Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T18:09:58.717Z"
             },
             {
               "$type": "Document",
