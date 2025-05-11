@@ -77,6 +77,7 @@
             textBox8 = new TextBox();
             button4 = new Button();
             button5 = new Button();
+            button6 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
@@ -532,11 +533,24 @@
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
+            // button6
+            // 
+            button6.BackColor = Color.Red;
+            button6.Font = new Font("Segoe UI", 16F);
+            button6.ForeColor = SystemColors.ButtonHighlight;
+            button6.Location = new Point(733, 609);
+            button6.Name = "button6";
+            button6.Size = new Size(160, 83);
+            button6.TabIndex = 47;
+            button6.Text = "Delete Appointment";
+            button6.UseVisualStyleBackColor = false;
+            // 
             // AppointmentEditor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1549, 908);
+            Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(textBox8);
@@ -646,5 +660,6 @@
         private TextBox textBox8;
         private Button button4;
         private Button button5;
+        private Button button6;
     }
 }
