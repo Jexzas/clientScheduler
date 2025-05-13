@@ -544,6 +544,7 @@
             button6.TabIndex = 47;
             button6.Text = "Delete Appointment";
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // AppointmentEditor
             // 

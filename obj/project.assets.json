@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Programming\\clientScheduler\\clientScheduler.csproj",
+      "projectUniqueName": "D:\\dev\\clientScheduler\\clientScheduler.csproj",
       "projectName": "clientScheduler",
-      "projectPath": "E:\\Programming\\clientScheduler\\clientScheduler.csproj",
+      "projectPath": "D:\\dev\\clientScheduler\\clientScheduler.csproj",
       "packagesPath": "C:\\Users\\jdrma\\.nuget\\packages\\",
-      "outputPath": "E:\\Programming\\clientScheduler\\obj\\",
+      "outputPath": "D:\\dev\\clientScheduler\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,7 +32,8 @@
         "net9.0-windows"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0-windows7.0": {

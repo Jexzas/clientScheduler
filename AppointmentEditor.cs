@@ -287,7 +287,7 @@ namespace clientScheduler
         private void button4_Click(object sender, EventArgs e)
         {
             clearFields();
-            
+
         }
         private void button5_Click(object sender, EventArgs e)
         {
@@ -301,16 +301,17 @@ namespace clientScheduler
             MySqlCommand tryCommand = thisConnect.CreateCommand();
             tryCommand.CommandText = $"SELECT appointmentId FROM appointment WHERE appointmentId = {testCase}";
             MySqlDataReader reader = tryCommand.ExecuteReader();
-            while(reader.Read())
+            while (reader.Read())
             {
                 if (reader.GetInt32(0) == testCase)
                 {
                     method = "edit";
-                } else
+                }
+                else
                 {
                     method = "new";
                 }
-                
+
             }
             thisConnect.Close();
             thisConnect.Open();
@@ -384,6 +385,39 @@ namespace clientScheduler
                 numericUpDown1.Value = reader.GetInt32(0) + 1;
             }
             thisConnect.Close();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            // Delete appointment
+            int chosenId = -1;
+            MySqlConnection thisConnect = Program.connect();
+            BindingList<Appointment> availableAppointments = new BindingList<Appointment>();
+            dataGridView2.Rows.Clear();
+
+            thisConnect.Open();
+            MySqlCommand command = thisConnect.CreateCommand();
+            command.CommandText = $"SELECT * FROM appointment WHERE appointmentId = {numericUpDown1.Value};";
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                try
+                {
+                    chosenId = reader.GetInt32("appointmentId");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("That is not a real appointment");
+                }
+            }
+            thisConnect.Close();
+            if (chosenId >= 0)
+            {
+                MessageBox.Show("Are you sure you want to delete this appointment?", "Oops", MessageBoxButtons.YesNo);
+            } else
+            {
+                MessageBox.Show("Dingbat");
+            }
         }
     }
 }
