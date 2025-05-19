@@ -20,11 +20,13 @@ namespace clientScheduler
     public partial class AppointmentEditor : Form
     {
         string username { get; set; }
-        public AppointmentEditor(string username)
+        string lang {  get; set; }
+        public AppointmentEditor(string username, string lang)
         {
             InitializeComponent();
             numericUpDown3.Maximum = GetUser();
             this.username = username;
+            this.lang = lang;
             label9.Text = DateTime.Now.Year.ToString();
             dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
             monthsView(DateTime.Now.Year.ToString());
@@ -106,8 +108,15 @@ namespace clientScheduler
             dataGridView1.Visible = false;
             Int32 chosenYear = Int32.Parse(year);
             DateTime chosen = new DateTime(chosenYear, Array.IndexOf(CultureInfo.CurrentCulture.DateTimeFormat.MonthNames, month) + 1, 1);
-            string[] days = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
-            dataGridView3.DataSource = null;
+            string[] days = new string[7];
+            if (lang == "en")
+            {
+                days = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ];
+            } else if (lang == "de")
+            {
+                days = [ "Sonn", "Mon", "Dien", "Mitt", "Donn", "Frei", "Sams" ];
+            }
+                dataGridView3.DataSource = null;
             dataGridView3.Columns.Clear();
             dataGridView3.AutoGenerateColumns = false;
             dataGridView3.Rows.Clear();
@@ -413,10 +422,27 @@ namespace clientScheduler
             thisConnect.Close();
             if (chosenId >= 0)
             {
-                MessageBox.Show("Are you sure you want to delete this appointment?", "Oops", MessageBoxButtons.YesNo);
+                DialogResult confirmResult = MessageBox.Show("Are you sure you want to delete this appointment?", "Oops", MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes) {
+                    // delete 
+                    MySqlConnection deleteConnect = Program.connect();
+                    deleteConnect.Open();
+                    MySqlCommand deleteCommand = deleteConnect.CreateCommand();
+                    deleteCommand.CommandText = $"DELETE FROM appointment WHERE appointmentId = {numericUpDown1.Value}";
+                    try
+                    {
+                        deleteCommand.ExecuteNonQuery();
+                        MessageBox.Show("Appointment deleted.");
+                    } catch (Exception)
+                    {
+                        MessageBox.Show("Issue. Not deleted.");
+                    }
+                    
+                }
+
             } else
             {
-                MessageBox.Show("Dingbat");
+                MessageBox.Show("Not deleted.");
             }
         }
     }
