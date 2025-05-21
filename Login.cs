@@ -51,13 +51,22 @@ public partial class Login : Form
     }
     private void button1_Click_1(object sender, EventArgs e)
     {
-        handleLogin(textBox1.Text, textBox2.Text);
+        handleLogin(textBox1.Text,  textBox2.Text, this.lang);
     }
 
-    private void handleLogin(string username, string password)
+    private void handleLogin(string username, string password, string lang)
     {
         bool isAuth = false;
         int userID = 0;
+        string codeLang;
+        if (lang == "English (US)")
+        {
+            codeLang = "en";
+        }
+        else
+        {
+            codeLang = "de";
+        }
         try
         {
             bool isUser = false;
@@ -109,7 +118,7 @@ public partial class Login : Form
         if (isAuth)
         {
             this.Hide();
-            Program.TriggerMain(username, lang, userID);
+            Program.TriggerMain(username, codeLang, userID);
         }
     }
 
