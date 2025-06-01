@@ -6,16 +6,32 @@ using System.Threading.Tasks;
 
 namespace clientScheduler
 {
-    class Person
+    public class Person
     {
         public int customerId {  get; set; }
         public string customerName { get; set; }
         public string address {  get; set; }
-        Person (int customerId, string customerName, string address)
+        public int active { get; set; }
+        public DateTime createDate { get; set; }
+        public string createdBy { get; set; }
+        public DateTime lastUpdate {  get; set; }
+        public string lastUpdatedBy { get; set; }
+        public int cityId { get; set; }
+        public string postalCode { get; set; }
+        public string phone { get; set; }
+        public Person (int customerId, string customerName, string address, Int32 active, DateTime createDate, string createdBy, DateTime lastUpdate, string lastUpdateBy, int cityId, string postalCode, string phone)
         {
             this.customerId = customerId;
             this.customerName = customerName;
             this.address = address;
+            this.active = active;
+            this.createDate = createDate;
+            this.createdBy = createdBy;
+            this.lastUpdate = lastUpdate;
+            this.lastUpdatedBy = lastUpdateBy;
+            this.cityId = cityId;
+            this.postalCode = postalCode;
+            this.phone = phone;
         }
 
     }

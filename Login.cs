@@ -32,6 +32,7 @@ public partial class Login : Form
 
     private void changeLang(string lang)
     {
+        this.lang = lang;
         if (lang == "en")
         {
             textBox1.Text = "Username";

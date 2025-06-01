@@ -34,6 +34,33 @@ namespace clientScheduler
             dateTimePicker2.CustomFormat = "MM/dd/yyyy hh:mm:ss";
             dateTimePicker4.CustomFormat = "MM/dd/yyyy hh:mm:ss";
             clearFields();
+            if (this.lang == "de")
+            {
+                label1.Text = "Termine Verwalten";
+                button1.Text = "Zurück";
+                label3.Text = "Kalendersicht";
+                label7.Text = "Jahr";
+                label5.Text = "Monat";
+                label2.Text = "Verfügbare Termine";
+                label4.Text = "Termindetails";
+                button6.Text = "Termin Löschen";
+                button5.Text = "Eintrag erstellen oder bearbeiten";
+                label10.Text = "Termin ID";
+                label11.Text = "Kunde ID";
+                label12.Text = "Benutzer ID";
+                button4.Text = "Felder Löschen";
+                label13.Text = "Titel";
+                label14.Text = "Beschreibung";
+                label14.Text = "Ort";
+                label16.Text = "Kontakt";
+                label17.Text = "Typ";
+                label19.Text = "Startdatum/-zeit";
+                label20.Text = "Enddatum/-zeit";
+                label21.Text = "Anlagedatum";
+                label22.Text = "Erstellt von";
+                label23.Text = "Letztes Änderungsdatum/-zeit";
+                label24.Text = "Zuletzt aktualisiert von";
+            }
         }
 
         public static int GetUser()
@@ -422,7 +449,7 @@ namespace clientScheduler
             thisConnect.Close();
             if (chosenId >= 0)
             {
-                DialogResult confirmResult = MessageBox.Show("Are you sure you want to delete this appointment?", "Oops", MessageBoxButtons.YesNo);
+                DialogResult confirmResult = this.lang == "de" ? MessageBox.Show("Sind Sie sicher, dass Sie diesen Termin löschen möchten?", "Beseitigung!", MessageBoxButtons.YesNo) : MessageBox.Show("Are you sure you want to delete this appointment?", "Deletion!", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes) {
                     // delete 
                     MySqlConnection deleteConnect = Program.connect();
@@ -432,17 +459,36 @@ namespace clientScheduler
                     try
                     {
                         deleteCommand.ExecuteNonQuery();
-                        MessageBox.Show("Appointment deleted.");
+                        if (lang == "de")
+                        {
+                            MessageBox.Show("Termin gelöscht.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Appointment deleted.");
+                        }
                     } catch (Exception)
                     {
-                        MessageBox.Show("Issue. Not deleted.");
+                        if (lang == "de")
+                        {
+                            MessageBox.Show("Warnung: Termin nicht gelöscht.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Issue. Not deleted.");
+                        }
                     }
                     
                 }
 
             } else
             {
-                MessageBox.Show("Not deleted.");
+                if (lang == "de") 
+                {
+                    MessageBox.Show("Nicht gelöscht.");
+                } else
+                { MessageBox.Show("Not deleted.");
+                };
             }
         }
     }

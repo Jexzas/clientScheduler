@@ -38,6 +38,13 @@ namespace clientScheduler
             label2.Text = username;
             getYourAppts(OffsetDifference);
             populateAppts();
+            if (this.lang == "de")
+            {
+                label3.Text = "Terminplanung mit Kunden";
+                label1.Text = "Wilkommen";
+                button1.Text = "Kunden Verwalten";
+                button2.Text = "Termine Verwalten";
+            }
         }
 
         private void mainClosed(object sender, FormClosedEventArgs e)
