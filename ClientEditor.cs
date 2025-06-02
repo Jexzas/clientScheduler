@@ -46,14 +46,14 @@ namespace clientScheduler
                     readie.GetInt32("customerId"),
                     readie.GetString("customerName"),
                     readie.GetString("address"),
+                    readie.GetInt32("cityId"),
+                    readie.GetString("postalCode"),
+                    readie.GetString("phone"),
                     readie.GetInt32("active"),
                     readie.GetDateTime("createDate"),
                     readie.GetString("createdBy"),
                     readie.GetDateTime("lastUpdate"),
-                    readie.GetString("lastUpdateBy"),
-                    readie.GetInt32("cityId"),
-                    readie.GetString("postalCode"),
-                    readie.GetString("phone")
+                    readie.GetString("lastUpdateBy")                    
                     ));
             }
             dataGridView1.DataSource = this.clients;
