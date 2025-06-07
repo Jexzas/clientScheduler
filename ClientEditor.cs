@@ -53,14 +53,20 @@ namespace clientScheduler
                     readie.GetDateTime("createDate"),
                     readie.GetString("createdBy"),
                     readie.GetDateTime("lastUpdate"),
-                    readie.GetString("lastUpdateBy")                    
+                    readie.GetString("lastUpdateBy")
                     ));
             }
             dataGridView1.DataSource = this.clients;
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clientEditor_Load(object sender, EventArgs e)
         {
 
         }

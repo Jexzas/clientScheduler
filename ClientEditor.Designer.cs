@@ -37,7 +37,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 20F);
-            label1.Location = new Point(472, 9);
+            label1.Location = new Point(733, 23);
             label1.Name = "label1";
             label1.Size = new Size(162, 31);
             label1.TabIndex = 0;
@@ -49,20 +49,21 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(33, 71);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(436, 217);
+            dataGridView1.Size = new Size(1549, 217);
             dataGridView1.TabIndex = 1;
             // 
             // clientEditor
             // 
             AutoScaleDimensions = new SizeF(12F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1143, 1020);
+            ClientSize = new Size(1624, 1020);
             Controls.Add(dataGridView1);
             Controls.Add(label1);
             Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(5, 7, 5, 7);
             Name = "clientEditor";
             Text = "clientEditor";
+            Load += clientEditor_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
