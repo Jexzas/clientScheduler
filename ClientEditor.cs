@@ -18,14 +18,51 @@ namespace clientScheduler
     {
         private MySqlConnection connection { get; set; }
         private BindingList<Person> clients { get; set; }
-        public clientEditor()
+        private string Username { get; set; }
+        private int nextNum { get; set; }
+        private string lang { get; set; }
+        public clientEditor(string username, string lang)
         {
+            this.Username = username;
+            this.lang = lang;
             connection = Program.connect();
             clients = new BindingList<Person>();
             InitializeComponent();
             populateClients();
+            nextNum = getNextNumber();
+            numericUpDown1.Value = nextNum;
+            if (lang == "de")
+            {
+                german();
+            }
+            dataGridView1.ClearSelection();
         }
 
+        private void german()
+        {
+            label1.Text = "Kundeneditor";
+            label2.Text = "Kundeninformationen";
+            label10.Text = "Termine des Kunden";
+            label3.Text = "Kundennummer";
+            label4.Text = "Kundenname";
+            label5.Text = "Adresse";
+            label6.Text = "Stadtnummer";
+            label7.Text = "Postleitzahl";
+            label8.Text = "Telefonnummer";
+            label9.Text = "Aktiv?";
+            button1.Text = "Aktualisieren";
+            button2.Text = "Löschen";
+            button3.Text = "Formular zurücksetzen";
+        }
+        public int getNextNumber()
+        {
+            List<Person> sorted = clients.OrderBy(c => c.customerId).ToList();
+
+            // Create a new BindingList based on the sorted list
+            BindingList<Person> sortedClientList = new BindingList<Person>(sorted);
+            int lastNum = sortedClientList[sortedClientList.Count - 1].customerId;
+            return lastNum + 1;
+        }
         public void populateClients()
         {
             connection.Open();
@@ -145,30 +182,40 @@ namespace clientScheduler
             {
                 client = dataGridView1.SelectedRows[0].DataBoundItem as Person;
 
-            } else
+            }
+            else
             {
-                List<Person> sorted = clients.OrderBy(c => c.customerId).ToList();
-
-                // Create a new BindingList based on the sorted list
-                BindingList<Person> sortedClientList = new BindingList<Person>(sorted);
-                client = new Person();
+                client = new Person(
+                       (int)numericUpDown1.Value,
+                       textBox1.Text,
+                       textBox2.Text,
+                       (int)numericUpDown2.Value,
+                       textBox3.Text,
+                       textBox4.Text,
+                       (int)numericUpDown3.Value,
+                       DateTime.Now,
+                       Username,
+                       DateTime.Now,
+                       Username
+                    );
             }
             // update or create record
             // remember you have to create an address record too
-            int thisId = numericUpDown1.Value;
+            int thisId = (int)numericUpDown1.Value;
             bool matches = false;
-            foreach (Person client in clients)
+            foreach (Person cli in clients)
             {
-                if (client.customerId == thisId)
+                if (cli.customerId == thisId)
                 {
                     matches = true;
                 }
             }
-            
-            if (matches)
+
+            if (matches && client != null)
             {
                 updateClientRecord(client);
-            } else
+            }
+            else if (!matches && client != null)
             {
                 newClientRecord(client);
             }
@@ -176,12 +223,24 @@ namespace clientScheduler
 
         private void updateClientRecord(Person client)
         {
-
+            MessageBox.Show("Update! " + JsonSerializer.Serialize(client));
         }
 
         private void newClientRecord(Person client)
         {
+            MessageBox.Show("Create! " + JsonSerializer.Serialize(client));
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // reset form
+            numericUpDown1.Value = nextNum;
+            textBox1.Text = "";
+            textBox2.Text = "";
+            numericUpDown2.Value = 0;
+            textBox3.Text = "";
+            textBox4.Text = "";
+            numericUpDown3.Value = 0;
         }
     }
 }

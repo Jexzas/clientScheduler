@@ -54,7 +54,6 @@ D:\dev\clientScheduler\bin\Debug\net9.0-windows\clientScheduler.runtimeconfig.js
 D:\dev\clientScheduler\bin\Debug\net9.0-windows\clientScheduler.dll
 D:\dev\clientScheduler\bin\Debug\net9.0-windows\clientScheduler.pdb
 D:\dev\clientScheduler\bin\Debug\net9.0-windows\MySql.Data.dll
-D:\dev\clientScheduler\bin\Debug\net9.0-windows\MySql.Data.xml
 D:\dev\clientScheduler\obj\Debug\net9.0-windows\clientScheduler.csproj.AssemblyReference.cache
 D:\dev\clientScheduler\obj\Debug\net9.0-windows\clientScheduler.AppointmentEditor.resources
 D:\dev\clientScheduler\obj\Debug\net9.0-windows\clientScheduler.clientEditor.resources
@@ -111,3 +110,17 @@ D:\Programming\clientScheduler\obj\Debug\net9.0-windows\refint\clientScheduler.d
 D:\Programming\clientScheduler\obj\Debug\net9.0-windows\clientScheduler.pdb
 D:\Programming\clientScheduler\obj\Debug\net9.0-windows\clientScheduler.genruntimeconfig.cache
 D:\Programming\clientScheduler\obj\Debug\net9.0-windows\ref\clientScheduler.dll
+D:\dev\clientScheduler\bin\Debug\net9.0-windows\BouncyCastle.Cryptography.dll
+D:\dev\clientScheduler\bin\Debug\net9.0-windows\Google.Protobuf.dll
+D:\dev\clientScheduler\bin\Debug\net9.0-windows\K4os.Compression.LZ4.dll
+D:\dev\clientScheduler\bin\Debug\net9.0-windows\K4os.Compression.LZ4.Streams.dll
+D:\dev\clientScheduler\bin\Debug\net9.0-windows\K4os.Hash.xxHash.dll
+D:\dev\clientScheduler\bin\Debug\net9.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\dev\clientScheduler\bin\Debug\net9.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+D:\dev\clientScheduler\bin\Debug\net9.0-windows\MySqlConnector.dll
+D:\dev\clientScheduler\bin\Debug\net9.0-windows\ZstdSharp.dll
+D:\dev\clientScheduler\bin\Debug\net9.0-windows\runtimes\win-x64\native\comerr64.dll
+D:\dev\clientScheduler\bin\Debug\net9.0-windows\runtimes\win-x64\native\gssapi64.dll
+D:\dev\clientScheduler\bin\Debug\net9.0-windows\runtimes\win-x64\native\k5sprt64.dll
+D:\dev\clientScheduler\bin\Debug\net9.0-windows\runtimes\win-x64\native\krb5_64.dll
+D:\dev\clientScheduler\bin\Debug\net9.0-windows\runtimes\win-x64\native\krbcc64.dll

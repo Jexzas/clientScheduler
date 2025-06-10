@@ -16,7 +16,7 @@ namespace clientScheduler
     public partial class Mainview : Form
     {
         public TimeZoneInfo est = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
-        private string username { get; set; }
+        public string Username;
         private string lang { get; set; }
         private int userID { get; set; }
         private BindingList<Appointment> MyAppointments { get; set; }
@@ -31,11 +31,11 @@ namespace clientScheduler
             OffsetDifference = estOffset - localOffset;
             this.lang = lang;
             this.userID = userID;
-            this.username = username;
+            this.Username = username;
             this.MyAppointments = new BindingList<Appointment>();
             connection = Program.connect();
             InitializeComponent();
-            label2.Text = username;
+            label2.Text = Username;
             getYourAppts(OffsetDifference);
             populateAppts();
             if (this.lang == "de")
@@ -97,14 +97,14 @@ namespace clientScheduler
         private void button1_Click(object sender, EventArgs e)
         {
             // Open Client Editor
-            clientEditor clientEditor = new clientEditor();
+            clientEditor clientEditor = new clientEditor(this.Username, this.lang);
             clientEditor.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             // Open Appointment Editor
-            AppointmentEditor appointmentEditor = new AppointmentEditor(this.username, this.lang);
+            AppointmentEditor appointmentEditor = new AppointmentEditor(this.Username, this.lang);
             appointmentEditor.ShowDialog();
         }
     }

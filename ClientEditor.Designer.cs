@@ -49,6 +49,7 @@
             label10 = new Label();
             button1 = new Button();
             button2 = new Button();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
@@ -241,11 +242,22 @@
             button2.Text = "Delete Record";
             button2.UseVisualStyleBackColor = false;
             // 
+            // button3
+            // 
+            button3.Location = new Point(400, 623);
+            button3.Name = "button3";
+            button3.Size = new Size(183, 32);
+            button3.TabIndex = 21;
+            button3.Text = "Reset Form";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // clientEditor
             // 
             AutoScaleDimensions = new SizeF(12F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1607, 757);
+            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label10);
@@ -304,5 +316,6 @@
         private Label label10;
         private Button button1;
         private Button button2;
+        private Button button3;
     }
 }
