@@ -11,18 +11,6 @@
       "RelativeMoniker": "D:0:0:{BC1AABE2-096D-CC9E-E175-57B83F3D797B}|clientScheduler.csproj|solutionrelative:clienteditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC1AABE2-096D-CC9E-E175-57B83F3D797B}|clientScheduler.csproj|d:\\dev\\clientscheduler\\mainview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC1AABE2-096D-CC9E-E175-57B83F3D797B}|clientScheduler.csproj|solutionrelative:mainview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC1AABE2-096D-CC9E-E175-57B83F3D797B}|clientScheduler.csproj|d:\\dev\\clientscheduler\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC1AABE2-096D-CC9E-E175-57B83F3D797B}|clientScheduler.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC1AABE2-096D-CC9E-E175-57B83F3D797B}|clientScheduler.csproj|d:\\dev\\clientscheduler\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC1AABE2-096D-CC9E-E175-57B83F3D797B}|clientScheduler.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BC1AABE2-096D-CC9E-E175-57B83F3D797B}|clientScheduler.csproj|d:\\dev\\clientscheduler\\appointmenteditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BC1AABE2-096D-CC9E-E175-57B83F3D797B}|clientScheduler.csproj|solutionrelative:appointmenteditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -31,8 +19,20 @@
       "RelativeMoniker": "D:0:0:{BC1AABE2-096D-CC9E-E175-57B83F3D797B}|clientScheduler.csproj|solutionrelative:appointmenteditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{BC1AABE2-096D-CC9E-E175-57B83F3D797B}|clientScheduler.csproj|d:\\dev\\clientscheduler\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC1AABE2-096D-CC9E-E175-57B83F3D797B}|clientScheduler.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC1AABE2-096D-CC9E-E175-57B83F3D797B}|clientScheduler.csproj|d:\\dev\\clientscheduler\\mainview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC1AABE2-096D-CC9E-E175-57B83F3D797B}|clientScheduler.csproj|solutionrelative:mainview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BC1AABE2-096D-CC9E-E175-57B83F3D797B}|clientScheduler.csproj|d:\\dev\\clientscheduler\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BC1AABE2-096D-CC9E-E175-57B83F3D797B}|clientScheduler.csproj|solutionrelative:person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC1AABE2-096D-CC9E-E175-57B83F3D797B}|clientScheduler.csproj|d:\\dev\\clientscheduler\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC1AABE2-096D-CC9E-E175-57B83F3D797B}|clientScheduler.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,26 +50,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "AppointmentEditor.cs",
               "DocumentMoniker": "D:\\dev\\clientScheduler\\AppointmentEditor.cs",
               "RelativeDocumentMoniker": "AppointmentEditor.cs",
               "ToolTip": "D:\\dev\\clientScheduler\\AppointmentEditor.cs",
               "RelativeToolTip": "AppointmentEditor.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAwwE4BAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAF8BAAAAAAAAAAAcwIsBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-08T19:49:20.396Z",
+              "WhenOpened": "2025-06-11T23:38:50.896Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "Person.cs",
               "DocumentMoniker": "D:\\dev\\clientScheduler\\Person.cs",
               "RelativeDocumentMoniker": "Person.cs",
               "ToolTip": "D:\\dev\\clientScheduler\\Person.cs",
               "RelativeToolTip": "Person.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAIBJwA8AAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-01T19:56:01.735Z",
               "EditorCaption": ""
@@ -82,7 +82,7 @@
               "RelativeDocumentMoniker": "ClientEditor.cs",
               "ToolTip": "D:\\dev\\clientScheduler\\ClientEditor.cs",
               "RelativeToolTip": "ClientEditor.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACUAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAA0BAAAAAAAAAAAgwDQBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-01T19:44:01.702Z",
               "EditorCaption": ""
@@ -101,7 +101,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "AppointmentEditor.cs [Design]",
               "DocumentMoniker": "D:\\dev\\clientScheduler\\AppointmentEditor.cs",
               "RelativeDocumentMoniker": "AppointmentEditor.cs",
@@ -113,33 +113,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Login.cs",
               "DocumentMoniker": "D:\\dev\\clientScheduler\\Login.cs",
               "RelativeDocumentMoniker": "Login.cs",
               "ToolTip": "D:\\dev\\clientScheduler\\Login.cs",
               "RelativeToolTip": "Login.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAwwDAAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAmwDAAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-19T00:16:11.204Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Mainview.cs",
               "DocumentMoniker": "D:\\dev\\clientScheduler\\Mainview.cs",
               "RelativeDocumentMoniker": "Mainview.cs",
               "ToolTip": "D:\\dev\\clientScheduler\\Mainview.cs",
               "RelativeToolTip": "Mainview.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAUwF4AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGoAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-06T18:09:58.717Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\dev\\clientScheduler\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",

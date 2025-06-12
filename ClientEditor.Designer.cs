@@ -210,6 +210,8 @@
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(884, 386);
             dataGridView2.TabIndex = 17;
+            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
+            dataGridView2.CellMouseDoubleClick += shortcutApt;
             // 
             // label10
             // 
@@ -241,6 +243,7 @@
             button2.TabIndex = 20;
             button2.Text = "Delete Record";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button3
             // 

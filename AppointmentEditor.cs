@@ -307,7 +307,25 @@ namespace clientScheduler
             textBox7.Text = thisAppointment.createdBy;
             textBox8.Text = thisAppointment.updatedBy;
             dateTimePicker4.Value = thisAppointment.lastUpdate;
+        }
 
+        public void selectedFromClient(Appointment thisAppointment)
+        {
+            numericUpDown1.Value = thisAppointment.appID;
+            numericUpDown2.Value = thisAppointment.customerID;
+            numericUpDown3.Value = thisAppointment.userId;
+            textBox1.Text = thisAppointment.title;
+            textBox2.Text = thisAppointment.description;
+            textBox3.Text = thisAppointment.location;
+            textBox4.Text = thisAppointment.contact;
+            textBox5.Text = thisAppointment.type;
+            textBox6.Text = thisAppointment.url;
+            dateTimePicker1.Value = thisAppointment.start;
+            dateTimePicker2.Value = thisAppointment.end;
+            dateTimePicker3.Value = thisAppointment.createDate;
+            textBox7.Text = thisAppointment.createdBy;
+            textBox8.Text = thisAppointment.updatedBy;
+            dateTimePicker4.Value = thisAppointment.lastUpdate;
         }
 
         private void label21_Click(object sender, EventArgs e)

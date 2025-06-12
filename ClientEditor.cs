@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -213,6 +214,12 @@ namespace clientScheduler
 
             if (matches && client != null)
             {
+                client.customerName = textBox1.Text;
+                client.address = textBox2.Text;
+                client.cityId = (int)numericUpDown2.Value;
+                client.active = (int)numericUpDown3.Value;
+                client.postalCode = textBox3.Text;
+                client.phone = textBox4.Text;
                 updateClientRecord(client);
             }
             else if (!matches && client != null)
@@ -223,11 +230,32 @@ namespace clientScheduler
 
         private void updateClientRecord(Person client)
         {
-            MessageBox.Show("Update! " + JsonSerializer.Serialize(client));
+            connection.Open();
+            MySqlCommand replaceCommand = connection.CreateCommand();
+            replaceCommand.CommandText = $@"
+                UPDATE customer SET customerName = '{client.customerName}',active = {client.active},lastUpdate = '{DateTime.Now.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss")}',lastUpdateBy = '{this.Username}' WHERE customerId = {client.customerId};";
+            MySqlCommand addressCommand = connection.CreateCommand();
+            addressCommand.CommandText = $@"
+                UPDATE address SET address = '{client.address}',postalCode = '{client.postalCode}',phone = '{client.phone}', lastUpdate = '{DateTime.Now.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss")}',lastUpdateBy = '{this.Username}' WHERE addressId = (SELECT addressId FROM customer WHERE customerId = {client.customerId});";
+            try
+            {
+                replaceCommand.ExecuteNonQuery();
+                addressCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                MessageBox.Show("Hmm. That didn't work.");
+            }
+            connection.Close();
+            dataGridView1.Rows.Clear();
+            populateClients();
         }
 
         private void newClientRecord(Person client)
         {
+            // need last addressId
+
             MessageBox.Show("Create! " + JsonSerializer.Serialize(client));
         }
 
@@ -241,6 +269,48 @@ namespace clientScheduler
             textBox3.Text = "";
             textBox4.Text = "";
             numericUpDown3.Value = 0;
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void shortcutApt(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            // Close this window and jump to the appointment
+            this.Hide();
+            Appointment selectedApt = dataGridView2.SelectedRows[0].DataBoundItem as Appointment;
+            AppointmentEditor appointmentEditor = new AppointmentEditor(this.Username, this.lang);
+            appointmentEditor.selectedFromClient(selectedApt);
+            appointmentEditor.ShowDialog();
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Delete a record
+            int id = (int)numericUpDown1.Value;
+            connection.Open();
+            MySqlCommand delAppsCommand = connection.CreateCommand();
+            delAppsCommand.CommandText = $"DELETE FROM appointment WHERE customerId = {id}";
+            MySqlCommand delAddCommand = connection.CreateCommand();
+            delAddCommand.CommandText = $"DELETE FROM address WHERE addressId = (SELECT addressId FROM customer WHERE customerId = {id});";
+            MySqlCommand delCustCommand = connection.CreateCommand();
+            delCustCommand.CommandText = $"DELETE FROM customer WHERE customerId = {id}";
+            try
+            {
+                delAppsCommand.ExecuteNonQuery();
+                delCustCommand.ExecuteNonQuery();
+                delAddCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+
+            connection.Close();
+            dataGridView1.Rows.Clear();
+            populateClients();
         }
     }
 }
