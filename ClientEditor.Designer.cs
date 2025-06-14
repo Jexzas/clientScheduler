@@ -76,6 +76,7 @@
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(1541, 211);
             dataGridView1.TabIndex = 1;
+            dataGridView1.DataBindingComplete += dataGridView1_DataBindingComplete;
             dataGridView1.Click += rowSelected;
             // 
             // label2
@@ -151,9 +152,12 @@
             // numericUpDown2
             // 
             numericUpDown2.Location = new Point(33, 625);
+            numericUpDown2.Maximum = new decimal(new int[] { 5, 0, 0, 0 });
+            numericUpDown2.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown2.Name = "numericUpDown2";
             numericUpDown2.Size = new Size(120, 30);
             numericUpDown2.TabIndex = 10;
+            numericUpDown2.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // textBox3
             // 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,9 +8,9 @@ using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 using ZstdSharp.Unsafe;
 
 
@@ -36,6 +37,8 @@ namespace clientScheduler
             {
                 german();
             }
+            dataGridView1.ClearSelection();
+            dataGridView1.CurrentCell = null;
             dataGridView1.ClearSelection();
         }
 
@@ -66,6 +69,7 @@ namespace clientScheduler
         }
         public void populateClients()
         {
+            dataGridView1.Rows.Clear();
             connection.Open();
             MySqlCommand commsie = connection.CreateCommand();
             commsie.CommandText = @"SELECT 
@@ -177,54 +181,113 @@ namespace clientScheduler
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            Person client;
-            if (dataGridView1.SelectedRows.Count > 0)
+        {   // TODO: validate form
+            bool checkForm()
             {
-                client = dataGridView1.SelectedRows[0].DataBoundItem as Person;
-
-            }
-            else
-            {
-                client = new Person(
-                       (int)numericUpDown1.Value,
-                       textBox1.Text,
-                       textBox2.Text,
-                       (int)numericUpDown2.Value,
-                       textBox3.Text,
-                       textBox4.Text,
-                       (int)numericUpDown3.Value,
-                       DateTime.Now,
-                       Username,
-                       DateTime.Now,
-                       Username
-                    );
-            }
-            // update or create record
-            // remember you have to create an address record too
-            int thisId = (int)numericUpDown1.Value;
-            bool matches = false;
-            foreach (Person cli in clients)
-            {
-                if (cli.customerId == thisId)
+                // name validate
+                bool hasSpecialChars = Regex.IsMatch(textBox1.Text, @"[^a-zA-Z0-9 '-]");
+                bool lengthGreater2 = textBox1.Text.Length > 2;
+                // address
+                bool lengthGreater7 = textBox1.Text.Length > 7;
+                bool hasAddChars = Regex.IsMatch(textBox2.Text, @"[^a-zA-Z0-9 .,!?#']");
+                // postal
+                bool length5 = textBox3.Text.Length == 5;
+                bool hasZipChars = Regex.IsMatch(textBox2.Text, @"^\d+$");
+                // phone
+                bool length78 = textBox4.Text.Length == 7 || textBox4.Text.Length == 8;
+                bool hasPhoneChars = Regex.IsMatch(textBox2.Text, @"^[0-9\-]+$");
+                List<bool> fieldcheck = [hasSpecialChars, lengthGreater2, lengthGreater7, hasAddChars, length5, hasZipChars, length78, hasPhoneChars];
+                foreach (bool field in fieldcheck)
                 {
-                    matches = true;
+                    if (field == true)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        string nameOfTestVariable = nameof(field);
+                        switch (nameOfTestVariable)
+                        {
+                            case "hasSpecialChars":
+                                MessageBox.Show("Customer name has invalid characters. Alphabet, hypen, apostrophes only");
+                                break;
+                            case "lenghtGreater2":
+                                MessageBox.Show("Customer name is too short.");
+                                break;
+                            case "lengthGreater7":
+                                MessageBox.Show("Address length is too short.");
+                                break;
+                            case "hasAddChars":
+                                MessageBox.Show("Invalid address characters. Alphanumeric and common punctuation only.");
+                                break;
+                            case "length5":
+                                MessageBox.Show("Zip codes must be five digits, numeric");
+                                break;
+                            case "hasZipChars":
+                                MessageBox.Show("Invalid characters in postal code.");
+                                break;
+                            case "length78":
+                                MessageBox.Show("A phone number can only be seven or eight characters incluing a hyphen.");
+                                break;
+                            case "hasPhoneChars":
+                                MessageBox.Show("Phone number must include numbers only except for hyphen.");
+                                break;
+                            default:
+                                return true;
+                        }
+                        return false;
+                    }
                 }
             }
-
-            if (matches && client != null)
+            bool isChecked = checkForm();
+            if (isChecked == true)
             {
-                client.customerName = textBox1.Text;
-                client.address = textBox2.Text;
-                client.cityId = (int)numericUpDown2.Value;
-                client.active = (int)numericUpDown3.Value;
-                client.postalCode = textBox3.Text;
-                client.phone = textBox4.Text;
-                updateClientRecord(client);
-            }
-            else if (!matches && client != null)
-            {
-                newClientRecord(client);
+                Person client;
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    client = dataGridView1.SelectedRows[0].DataBoundItem as Person;
+                }
+                else
+                {
+                    client = new Person(
+                           (int)numericUpDown1.Value,
+                           textBox1.Text,
+                           textBox2.Text,
+                           (int)numericUpDown2.Value,
+                           textBox3.Text,
+                           textBox4.Text,
+                           (int)numericUpDown3.Value,
+                           DateTime.Now,
+                           Username,
+                           DateTime.Now,
+                           Username
+                        );
+                }
+                // update or create record
+                // remember you have to create an address record too
+                int thisId = (int)numericUpDown1.Value;
+                bool matches = false;
+                foreach (Person cli in clients)
+                {
+                    if (cli.customerId == thisId)
+                    {
+                        matches = true;
+                    }
+                }
+                if (matches && client != null)
+                {
+                    client.customerName = textBox1.Text;
+                    client.address = textBox2.Text;
+                    client.cityId = (int)numericUpDown2.Value;
+                    client.active = (int)numericUpDown3.Value;
+                    client.postalCode = textBox3.Text;
+                    client.phone = textBox4.Text;
+                    updateClientRecord(client);
+                }
+                else if (!matches && client != null)
+                {
+                    newClientRecord(client);
+                }
             }
         }
 
@@ -255,8 +318,45 @@ namespace clientScheduler
         private void newClientRecord(Person client)
         {
             // need last addressId
-
-            MessageBox.Show("Create! " + JsonSerializer.Serialize(client));
+            connection.Open();
+            List<int> ids = new List<int>();
+            MySqlCommand getLastAdd = connection.CreateCommand();
+            getLastAdd.CommandText = "SELECT addressId FROM address;";
+            MySqlDataReader readie = getLastAdd.ExecuteReader();
+            while (readie.Read())
+            {
+                for (int i = 0; i < readie.FieldCount; i++)
+                {
+                    ids.Add(readie.GetInt32(i));
+                }
+            }
+            ids.Sort((a, b) => b.CompareTo(a));
+            int newAddId = ids[0] + 1;
+            // create new address
+            connection.Close();
+            connection.Open();
+            MySqlCommand newAdd = connection.CreateCommand();
+            newAdd.CommandText = $"INSERT INTO address (addressId, address, address2, cityId, postalCode, phone, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES ({newAddId}, '{client.address}', ' ', {client.cityId}, '{client.postalCode}', '{client.phone}', '{DateTime.Now.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss")}', '{this.Username}', '{DateTime.Now.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss")}', '{this.Username}');";
+            MySqlCommand newClient = connection.CreateCommand();
+            newClient.CommandText = $"INSERT INTO customer (customerId, customerName, addressId, active, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES ({client.customerId}, '{client.customerName}', {newAddId}, '{client.active}', '{DateTime.Now.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss")}', '{this.Username}', '{DateTime.Now.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss")}', '{this.Username}');";
+            try
+            {
+                newAdd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("That did not work (address)." + ex.Message);
+            }
+            try
+            {
+                newClient.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("That did not work(client)." + ex.Message);
+            }
+            connection.Close();
+            populateClients();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -304,13 +404,19 @@ namespace clientScheduler
                 delCustCommand.ExecuteNonQuery();
                 delAddCommand.ExecuteNonQuery();
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
 
             connection.Close();
             dataGridView1.Rows.Clear();
             populateClients();
+        }
+
+        private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dataGridView1.ClearSelection();
         }
     }
 }
