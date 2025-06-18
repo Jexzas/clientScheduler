@@ -199,7 +199,7 @@ namespace clientScheduler
                 List<bool> fieldcheck = [hasSpecialChars, lengthGreater2, lengthGreater7, hasAddChars, length5, hasZipChars, length78, hasPhoneChars];
                 foreach (bool field in fieldcheck)
                 {
-                    if (field == true)
+                    if (field == false)
                     {
                         continue;
                     }
@@ -210,22 +210,21 @@ namespace clientScheduler
                         {
                             case "hasSpecialChars":
                                 MessageBox.Show("Customer name has invalid characters. Alphabet, hypen, apostrophes only");
-                                break;
+                                return true;
                             case "lenghtGreater2":
                                 MessageBox.Show("Customer name is too short.");
-                                break;
+                                return true;
                             case "lengthGreater7":
                                 MessageBox.Show("Address length is too short.");
-                                break;
+                                return true;
                             case "hasAddChars":
                                 MessageBox.Show("Invalid address characters. Alphanumeric and common punctuation only.");
-                                break;
+                                return true;
                             case "length5":
                                 MessageBox.Show("Zip codes must be five digits, numeric");
-                                break;
+                                return true;
                             case "hasZipChars":
                                 MessageBox.Show("Invalid characters in postal code.");
-                                break;
                             case "length78":
                                 MessageBox.Show("A phone number can only be seven or eight characters incluing a hyphen.");
                                 break;
@@ -233,10 +232,11 @@ namespace clientScheduler
                                 MessageBox.Show("Phone number must include numbers only except for hyphen.");
                                 break;
                             default:
-                                return true;
+                                return false;
                         }
                         return false;
                     }
+                    return true;
                 }
             }
             bool isChecked = checkForm();
