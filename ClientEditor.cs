@@ -186,61 +186,103 @@ namespace clientScheduler
             {
                 // name validate
                 bool hasSpecialChars = Regex.IsMatch(textBox1.Text, @"[^a-zA-Z0-9 '-]");
-                bool lengthGreater2 = textBox1.Text.Length > 2;
+                bool lengthGreater2 = textBox1.Text.Length <= 2;
                 // address
-                bool lengthGreater7 = textBox1.Text.Length > 7;
+                bool lengthGreater7 = textBox2.Text.Length <= 7;
                 bool hasAddChars = Regex.IsMatch(textBox2.Text, @"[^a-zA-Z0-9 .,!?#']");
                 // postal
-                bool length5 = textBox3.Text.Length == 5;
-                bool hasZipChars = Regex.IsMatch(textBox2.Text, @"^\d+$");
+                bool length5 = textBox3.Text.Length != 5;
+                bool hasZipChars = Regex.IsMatch(textBox3.Text, @"^0-9");
                 // phone
-                bool length78 = textBox4.Text.Length == 7 || textBox4.Text.Length == 8;
-                bool hasPhoneChars = Regex.IsMatch(textBox2.Text, @"^[0-9\-]+$");
-                List<bool> fieldcheck = [hasSpecialChars, lengthGreater2, lengthGreater7, hasAddChars, length5, hasZipChars, length78, hasPhoneChars];
-                foreach (bool field in fieldcheck)
+                bool length78 = textBox4.Text.Length < 7 && textBox4.Text.Length > 8;
+                bool hasPhoneChars = Regex.IsMatch(textBox4.Text, @"^[0-9\-]+$");
+                var fieldChecks = new List<(bool failed, string code)>
                 {
-                    if (field == false)
+                    (hasSpecialChars, "hasSpecialChars"),
+                    (lengthGreater2, "lengthGreater2"),
+                    (lengthGreater7, "lengthGreater7"),
+                    (hasAddChars, "hasAddChars"),
+                    (length5, "length5"),
+                    (hasZipChars, "hasZipChars"),
+                    (length78, "length78"),
+                    (hasPhoneChars, "hasPhoneChars")
+                }; 
+                foreach ((bool failed, string code) in fieldChecks)
+                {
+                    if (failed == false)
                     {
                         continue;
                     }
                     else
                     {
-                        string nameOfTestVariable = nameof(field);
-                        switch (nameOfTestVariable)
+                        string nameOfTestVariable = code;
+                        if (lang == "de")
                         {
-                            case "hasSpecialChars":
-                                MessageBox.Show("Customer name has invalid characters. Alphabet, hypen, apostrophes only");
-                                return true;
-                            case "lenghtGreater2":
-                                MessageBox.Show("Customer name is too short.");
-                                return true;
-                            case "lengthGreater7":
-                                MessageBox.Show("Address length is too short.");
-                                return true;
-                            case "hasAddChars":
-                                MessageBox.Show("Invalid address characters. Alphanumeric and common punctuation only.");
-                                return true;
-                            case "length5":
-                                MessageBox.Show("Zip codes must be five digits, numeric");
-                                return true;
-                            case "hasZipChars":
-                                MessageBox.Show("Invalid characters in postal code.");
-                            case "length78":
-                                MessageBox.Show("A phone number can only be seven or eight characters incluing a hyphen.");
-                                break;
-                            case "hasPhoneChars":
-                                MessageBox.Show("Phone number must include numbers only except for hyphen.");
-                                break;
-                            default:
-                                return false;
+                            switch (nameOfTestVariable)
+                            {
+                                case "hasSpecialChars":
+                                    MessageBox.Show("Der Kundenname enthält ungültige Zeichen. Nur Buchstaben, Bindestriche und Apostrophe sind erlaubt.");
+                                    return true;
+                                case "lengthGreater2":
+                                    MessageBox.Show("Der Kundenname ist zu kurz.");
+                                    return true;
+                                case "lengthGreater7":
+                                    MessageBox.Show("Die Adresse ist zu kurz.");
+                                    return true;
+                                case "hasAddChars":
+                                    MessageBox.Show("Die Adresse enthält ungültige Zeichen. Nur Buchstaben, Zahlen und gängige Satzzeichen sind erlaubt.");
+                                    return true;
+                                case "length5":
+                                    MessageBox.Show("Postleitzahlen müssen genau fünf Ziffern enthalten.");
+                                    return true;
+                                case "hasZipChars":
+                                    MessageBox.Show("Die Postleitzahl enthält ungültige Zeichen.");
+                                    return true;
+                                case "length78":
+                                    MessageBox.Show("Die Telefonnummer muss sieben oder acht Zeichen enthalten, inklusive Bindestrich.");
+                                    return true;
+                                case "hasPhoneChars":
+                                    MessageBox.Show("Die Telefonnummer darf nur Ziffern und Bindestriche enthalten.");
+                                    return true;
+                            }
                         }
-                        return false;
+                        else
+                        {
+                            switch (nameOfTestVariable)
+                            {
+                                case "hasSpecialChars":
+                                    MessageBox.Show("Customer name has invalid characters. Alphabet, hypen, apostrophes only");
+                                    return true;
+                                case "lenghtGreater2":
+                                    MessageBox.Show("Customer name is too short.");
+                                    return true;
+                                case "lengthGreater7":
+                                    MessageBox.Show("Address length is too short.");
+                                    return true;
+                                case "hasAddChars":
+                                    MessageBox.Show("Invalid address characters. Alphanumeric and common punctuation only.");
+                                    return true;
+                                case "length5":
+                                    MessageBox.Show("Zip codes must be five digits, numeric");
+                                    return true;
+                                case "hasZipChars":
+                                    MessageBox.Show("Invalid characters in postal code.");
+                                    return true;
+                                case "length78":
+                                    MessageBox.Show("A phone number can only be seven or eight characters incluing a hyphen.");
+                                    return true;
+                                case "hasPhoneChars":
+                                    MessageBox.Show("Phone number must include numbers only except for hyphen.");
+                                    return true;
+                            }
+                        }
+
                     }
-                    return true;
                 }
+                return false;
             }
             bool isChecked = checkForm();
-            if (isChecked == true)
+            if (isChecked == false)
             {
                 Person client;
                 if (dataGridView1.SelectedRows.Count > 0)
