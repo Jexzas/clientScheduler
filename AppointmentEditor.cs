@@ -14,6 +14,7 @@ using System.Windows.Forms.VisualStyles;
 using static System.Net.Mime.MediaTypeNames;
 using MySql.Data.MySqlClient;
 using Microsoft.VisualBasic.ApplicationServices;
+using System.Runtime.CompilerServices;
 
 namespace clientScheduler
 {
@@ -30,9 +31,9 @@ namespace clientScheduler
             label9.Text = DateTime.Now.Year.ToString();
             dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
             monthsView(DateTime.Now.Year.ToString());
-            dateTimePicker1.CustomFormat = "MM/dd/yyyy hh:mm:ss";
-            dateTimePicker2.CustomFormat = "MM/dd/yyyy hh:mm:ss";
-            dateTimePicker4.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            dateTimePicker1.CustomFormat = "MM/dd/yyyy HH:mm:ss";
+            dateTimePicker2.CustomFormat = "MM/dd/yyyy HH:mm:ss";
+            dateTimePicker4.CustomFormat = "MM/dd/yyyy HH:mm:ss";
             clearFields();
             if (this.lang == "de")
             {
@@ -391,8 +392,15 @@ namespace clientScheduler
 
             if (method == "new")
             {
-                newAppointment.createdBy = this.username;
-                newEntry.CommandText = $"INSERT INTO appointment (appointmentId, customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES ({newAppointment.appID}, {newAppointment.customerID}, {newAppointment.userId}, \'{newAppointment.title}\', \'{newAppointment.description}\', \'{newAppointment.location}\', \'{newAppointment.contact}\', \'{newAppointment.type}\', \'{newAppointment.url}\', \'{newAppointment.start.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss")}\', \'{newAppointment.end.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss")}\', \'{newAppointment.createDate.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss")}\', \'{newAppointment.createdBy}\', \'{newAppointment.lastUpdate.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss")}\', \'{newAppointment.updatedBy}\')";
+                bool good = validateApp();
+                if (good == false)
+                {
+                    newAppointment.createdBy = this.username;
+                    newEntry.CommandText = $"INSERT INTO appointment (appointmentId, customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES ({newAppointment.appID}, {newAppointment.customerID}, {newAppointment.userId}, \'{newAppointment.title}\', \'{newAppointment.description}\', \'{newAppointment.location}\', \'{newAppointment.contact}\', \'{newAppointment.type}\', \'{newAppointment.url}\', \'{newAppointment.start.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss")}\', \'{newAppointment.end.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss")}\', \'{newAppointment.createDate.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss")}\', \'{newAppointment.createdBy}\', \'{newAppointment.lastUpdate.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss")}\', \'{newAppointment.updatedBy}\')";
+                } else
+                {
+                    return;
+                }
             }
             else if (method == "edit")
             {
@@ -408,6 +416,42 @@ namespace clientScheduler
             thisConnect.Close();
         }
 
+        private bool validateApp()
+        {
+            // check for overlap and valid time
+            string checkDate = dateTimePicker1.Value.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss");
+            List<int> resultOverlap = [];
+            bool overlap = false;
+            MySqlConnection validConnect = Program.connect();
+            MySqlCommand validComm = validConnect.CreateCommand();
+            validComm.CommandText = $"SELECT * FROM appointment WHERE '{checkDate}' BETWEEN start AND end;";
+            validConnect.Open();
+            MySqlDataReader thisRead = validComm.ExecuteReader();
+            while (thisRead.Read())
+            {
+                resultOverlap.Add(thisRead.GetInt32("appointmentId"));
+            }
+            if (resultOverlap.Count > 0)
+            {
+                overlap = true;
+                MessageBox.Show("That appointment conflicts with an existing one.");
+                validConnect.Close();
+                return overlap;
+            }
+            else
+            {
+                overlap = false;
+            }
+            DateTime checkTime = dateTimePicker1.Value.Add(Mainview.OffsetDifference);
+            if (checkTime.Hour < 9 || checkTime.Hour > 17) {
+                MessageBox.Show("That is outside business hours.");
+                validConnect.Close();
+                return true;
+            }
+            validConnect.Close();
+            return false;
+            
+        }
         private void clearFields()
         {
             // clear fields

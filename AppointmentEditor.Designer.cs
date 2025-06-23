@@ -309,7 +309,7 @@
             label13.AutoSize = true;
             label13.Location = new Point(1052, 353);
             label13.Name = "label13";
-            label13.Size = new Size(29, 15);
+            label13.Size = new Size(30, 15);
             label13.TabIndex = 21;
             label13.Text = "Title";
             // 
@@ -373,7 +373,7 @@
             label17.AutoSize = true;
             label17.Location = new Point(1049, 612);
             label17.Name = "label17";
-            label17.Size = new Size(31, 15);
+            label17.Size = new Size(32, 15);
             label17.TabIndex = 29;
             label17.Text = "Type";
             // 
@@ -413,7 +413,7 @@
             label19.AutoSize = true;
             label19.Location = new Point(1340, 352);
             label19.Name = "label19";
-            label19.Size = new Size(89, 15);
+            label19.Size = new Size(90, 15);
             label19.TabIndex = 34;
             label19.Text = "Start Date/Time";
             label19.TextAlign = ContentAlignment.TopCenter;
@@ -423,7 +423,7 @@
             label20.AutoSize = true;
             label20.Location = new Point(1340, 407);
             label20.Name = "label20";
-            label20.Size = new Size(85, 15);
+            label20.Size = new Size(86, 15);
             label20.TabIndex = 35;
             label20.Text = "End Date/Time";
             label20.TextAlign = ContentAlignment.TopCenter;
@@ -478,7 +478,7 @@
             label23.AutoSize = true;
             label23.Location = new Point(1324, 612);
             label23.Name = "label23";
-            label23.Size = new Size(127, 15);
+            label23.Size = new Size(128, 15);
             label23.TabIndex = 41;
             label23.Text = "Last Update Date/Time";
             label23.TextAlign = ContentAlignment.TopCenter;
