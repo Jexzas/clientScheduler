@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZstdSharp.Unsafe;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace clientScheduler
@@ -19,11 +20,12 @@ namespace clientScheduler
     public partial class clientEditor : Form
     {
         private MySqlConnection connection { get; set; }
+        private int userID { get; set; }
         private BindingList<Person> clients { get; set; }
         private string Username { get; set; }
         private int nextNum { get; set; }
         private string lang { get; set; }
-        public clientEditor(string username, string lang)
+        public clientEditor(string username, string lang, int userID)
         {
             this.Username = username;
             this.lang = lang;
@@ -40,6 +42,7 @@ namespace clientScheduler
             dataGridView1.ClearSelection();
             dataGridView1.CurrentCell = null;
             dataGridView1.ClearSelection();
+            this.userID = userID;
         }
 
         private void german()
@@ -184,8 +187,28 @@ namespace clientScheduler
         {   // TODO: validate form
             bool checkForm()
             {
-                // name validate
-                bool hasSpecialChars = Regex.IsMatch(textBox1.Text, @"[^a-zA-Z0-9 '-]");
+                System.Windows.Forms.TextBox[] fields = { textBox1, textBox2, textBox3, textBox4 };
+
+                bool allFilled = fields.All(tb => !string.IsNullOrWhiteSpace(tb.Text));
+
+                if (allFilled)
+                {
+                    // All fields are filled, no action
+                }
+                else
+                {
+                    if (this.lang == "de")
+                    {
+                        MessageBox.Show("Bitte füllen Sie alle Felder aus.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please fill in all fields.");
+                    }
+                    return true;
+                }
+                    // name validate
+                    bool hasSpecialChars = Regex.IsMatch(textBox1.Text, @"[^a-zA-Z0-9 '-]");
                 bool lengthGreater2 = textBox1.Text.Length <= 2;
                 // address
                 bool lengthGreater7 = textBox2.Text.Length <= 7;
@@ -423,7 +446,7 @@ namespace clientScheduler
             // Close this window and jump to the appointment
             this.Hide();
             Appointment selectedApt = dataGridView2.SelectedRows[0].DataBoundItem as Appointment;
-            AppointmentEditor appointmentEditor = new AppointmentEditor(this.Username, this.lang);
+            AppointmentEditor appointmentEditor = new AppointmentEditor(this.Username, this.lang, this.userID);
             appointmentEditor.selectedFromClient(selectedApt);
             appointmentEditor.ShowDialog();
             this.Close();

@@ -284,9 +284,11 @@
             // numericUpDown2
             // 
             numericUpDown2.Location = new Point(773, 425);
+            numericUpDown2.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown2.Name = "numericUpDown2";
             numericUpDown2.Size = new Size(120, 23);
             numericUpDown2.TabIndex = 18;
+            numericUpDown2.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // label12
             // 
@@ -300,9 +302,11 @@
             // numericUpDown3
             // 
             numericUpDown3.Location = new Point(773, 481);
+            numericUpDown3.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown3.Name = "numericUpDown3";
             numericUpDown3.Size = new Size(120, 23);
             numericUpDown3.TabIndex = 20;
+            numericUpDown3.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // label13
             // 

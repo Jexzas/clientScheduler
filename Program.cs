@@ -5,6 +5,7 @@ using Microsoft.VisualBasic.ApplicationServices;
 using System.Globalization;
 using MySql.Data.MySqlClient;
 using System.Text;
+using System.Runtime.CompilerServices;
 
 static class Program
 {

@@ -21,11 +21,13 @@ namespace clientScheduler
     public partial class AppointmentEditor : Form
     {
         string username { get; set; }
+        int userID {  get; set; }
         string lang {  get; set; }
-        public AppointmentEditor(string username, string lang)
+        public AppointmentEditor(string username, string lang, int userID)
         {
             InitializeComponent();
             numericUpDown3.Maximum = GetUser();
+            this.userID = userID;
             this.username = username;
             this.lang = lang;
             label9.Text = DateTime.Now.Year.ToString();
@@ -392,8 +394,8 @@ namespace clientScheduler
 
             if (method == "new")
             {
-                bool good = validateApp();
-                if (good == false)
+                bool failed = validateApp();
+                if (failed == false)
                 {
                     newAppointment.createdBy = this.username;
                     newEntry.CommandText = $"INSERT INTO appointment (appointmentId, customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES ({newAppointment.appID}, {newAppointment.customerID}, {newAppointment.userId}, \'{newAppointment.title}\', \'{newAppointment.description}\', \'{newAppointment.location}\', \'{newAppointment.contact}\', \'{newAppointment.type}\', \'{newAppointment.url}\', \'{newAppointment.start.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss")}\', \'{newAppointment.end.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss")}\', \'{newAppointment.createDate.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss")}\', \'{newAppointment.createdBy}\', \'{newAppointment.lastUpdate.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss")}\', \'{newAppointment.updatedBy}\')";
@@ -418,6 +420,26 @@ namespace clientScheduler
 
         private bool validateApp()
         {
+            System.Windows.Forms.TextBox[] fields = { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6 };
+
+            bool allFilled = fields.All(tb => !string.IsNullOrWhiteSpace(tb.Text));
+
+            if (allFilled)
+            {
+                // All fields are filled, no action
+            }
+            else
+            {
+                if (this.lang == "de")
+                {
+                    MessageBox.Show("Bitte füllen Sie alle Felder aus.");
+                }
+                else
+                {
+                    MessageBox.Show("Please fill in all fields.");
+                }
+                return true;
+            }
             // check for overlap and valid time
             string checkDate = dateTimePicker1.Value.Add(Mainview.OffsetDifference).ToString("yyyy-MM-dd HH:mm:ss");
             List<int> resultOverlap = [];

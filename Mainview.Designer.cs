@@ -34,6 +34,7 @@
             dataGridView1 = new DataGridView();
             button1 = new Button();
             button2 = new Button();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -101,11 +102,24 @@
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
+            // button3
+            // 
+            button3.BackColor = Color.IndianRed;
+            button3.Font = new Font("Segoe UI", 14F);
+            button3.Location = new Point(12, 12);
+            button3.Name = "button3";
+            button3.Size = new Size(129, 49);
+            button3.TabIndex = 6;
+            button3.Text = "Reports";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
             // Mainview
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1575, 900);
+            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
@@ -115,6 +129,7 @@
             Name = "Mainview";
             Text = "Client Scheduling";
             FormClosed += mainClosed;
+            Load += Mainview_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -128,5 +143,6 @@
         private DataGridView dataGridView1;
         private Button button1;
         private Button button2;
+        private Button button3;
     }
 }

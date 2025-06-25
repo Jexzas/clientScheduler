@@ -27,7 +27,6 @@ public partial class Login : Form
         }
 
         connection = Program.connect();
-
     }
 
     private void changeLang(string lang)

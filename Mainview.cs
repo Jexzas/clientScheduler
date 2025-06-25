@@ -6,6 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -45,6 +46,29 @@ namespace clientScheduler
                 button1.Text = "Kunden Verwalten";
                 button2.Text = "Termine Verwalten";
             }
+            checkIfAppt();
+        }
+
+        private void checkIfAppt()
+        {
+            foreach (Appointment appointment in MyAppointments)
+            {
+                if ((appointment.start - DateTime.Now).TotalMinutes >= 0 && (appointment.start - DateTime.Now).TotalMinutes <= 15)
+                {
+                    if (appointment.userId == this.userID)
+                    {
+                        if (this.lang == "en")
+                        {
+                            MessageBox.Show("You have an appointment within the next 15 minutes!!!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sie haben in den nächsten 15 Minuten einen Termin!");
+                        }
+
+                    }
+                }
+            }
         }
 
         private void mainClosed(object sender, FormClosedEventArgs e)
@@ -52,7 +76,7 @@ namespace clientScheduler
             Application.Exit();
         }
 
-        private void getYourAppts(TimeSpan offset)
+        public void getYourAppts(TimeSpan offset)
         {
             connection.Open();
             MySqlCommand command = connection.CreateCommand();
@@ -97,15 +121,27 @@ namespace clientScheduler
         private void button1_Click(object sender, EventArgs e)
         {
             // Open Client Editor
-            clientEditor clientEditor = new clientEditor(this.Username, this.lang);
+            clientEditor clientEditor = new clientEditor(this.Username, this.lang, this.userID);
             clientEditor.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             // Open Appointment Editor
-            AppointmentEditor appointmentEditor = new AppointmentEditor(this.Username, this.lang);
+            AppointmentEditor appointmentEditor = new AppointmentEditor(this.Username, this.lang, this.userID);
             appointmentEditor.ShowDialog();
+        }
+
+        private void Mainview_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            getYourAppts(OffsetDifference);
+            Reports reports = new Reports(MyAppointments, this.userID, this.lang);
+            reports.ShowDialog();
         }
     }
 }
