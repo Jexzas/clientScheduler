@@ -26,7 +26,9 @@ namespace clientScheduler
             this.lang = lang;
             if (lang == "de")
             {
-                button1.Text = 
+                button1.Text = "Termintypen nach Monat";
+                button2.Text = "Termine pro Benutzer";
+                button3.Text = "Letzte 30 Tage nach Benutzer";
             }
         }
 
@@ -81,9 +83,16 @@ namespace clientScheduler
             );
             if (report.Count == 0)
             {
-                MessageBox.Show("No future appointments in database.");
+                if (this.lang == "de")
+                {
+                    MessageBox.Show("Keine zukünftigen Termine in der Datenbank vorhanden.");
+                }
+                else
+                {
+                    MessageBox.Show("No future appointments in database.");
+                }
             }
-            dataGridView1.DataSource = report;s
+            dataGridView1.DataSource = report;
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.Refresh();
             if (lang == "de")
@@ -110,7 +119,15 @@ namespace clientScheduler
             );
             if (report.Count == 0)
             {
-                MessageBox.Show("No appointments for this user in the last 30 days.");
+                if (this.lang == "de")
+                {
+                    MessageBox.Show("Für diesen Benutzer liegen in den letzten 30 Tagen keine Termine vor.");
+                }
+                else
+                {
+                    MessageBox.Show("No appointments for this user in the last 30 days.");
+
+                }
             }
             dataGridView1.DataSource = report;
             dataGridView1.AutoGenerateColumns = true;

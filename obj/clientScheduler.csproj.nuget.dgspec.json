@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Programming\\clientScheduler\\clientScheduler.csproj": {}
+    "D:\\dev\\clientScheduler\\clientScheduler.csproj": {}
   },
   "projects": {
-    "D:\\Programming\\clientScheduler\\clientScheduler.csproj": {
+    "D:\\dev\\clientScheduler\\clientScheduler.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Programming\\clientScheduler\\clientScheduler.csproj",
+        "projectUniqueName": "D:\\dev\\clientScheduler\\clientScheduler.csproj",
         "projectName": "clientScheduler",
-        "projectPath": "D:\\Programming\\clientScheduler\\clientScheduler.csproj",
+        "projectPath": "D:\\dev\\clientScheduler\\clientScheduler.csproj",
         "packagesPath": "C:\\Users\\jdrma\\.nuget\\packages\\",
-        "outputPath": "D:\\Programming\\clientScheduler\\obj\\",
+        "outputPath": "D:\\dev\\clientScheduler\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -22,16 +22,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net9.0-windows"
+          "net8.0-windows7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net9.0-windows7.0": {
-            "targetAlias": "net9.0-windows",
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows7.0",
             "projectReferences": {}
           }
         },
@@ -45,11 +44,11 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
-        "net9.0-windows7.0": {
-          "targetAlias": "net9.0-windows",
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows7.0",
           "dependencies": {
             "MySql.Data": {
               "target": "Package",
@@ -79,7 +78,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

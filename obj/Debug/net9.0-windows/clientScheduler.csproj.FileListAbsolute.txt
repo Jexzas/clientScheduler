@@ -125,3 +125,4 @@ D:\dev\clientScheduler\bin\Debug\net9.0-windows\runtimes\win-x64\native\k5sprt64
 D:\dev\clientScheduler\bin\Debug\net9.0-windows\runtimes\win-x64\native\krb5_64.dll
 D:\dev\clientScheduler\bin\Debug\net9.0-windows\runtimes\win-x64\native\krbcc64.dll
 D:\Programming\clientScheduler\obj\Debug\net9.0-windows\clientScheduler.Reports.resources
+D:\dev\clientScheduler\obj\Debug\net9.0-windows\clientScheduler.Reports.resources
