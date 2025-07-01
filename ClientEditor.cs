@@ -60,6 +60,17 @@ namespace clientScheduler
             button1.Text = "Aktualisieren";
             button2.Text = "Löschen";
             button3.Text = "Formular zurücksetzen";
+            dataGridView1.Columns["customerId"].HeaderText = "Kunden-ID";
+            dataGridView1.Columns["customerName"].HeaderText = "Kundenname";
+            dataGridView1.Columns["address"].HeaderText = "Adresse";
+            dataGridView1.Columns["cityId"].HeaderText = "Stadt-ID";
+            dataGridView1.Columns["postalCode"].HeaderText = "Postleitzahl";
+            dataGridView1.Columns["phone"].HeaderText = "Telefonnummer";
+            dataGridView1.Columns["active"].HeaderText = "Aktiv";
+            dataGridView1.Columns["createDate"].HeaderText = "Erstellungsdatum";
+            dataGridView1.Columns["createdBy"].HeaderText = "Erstellt von";
+            dataGridView1.Columns["lastUpdate"].HeaderText = "Letzte Aktualisierung";
+            dataGridView1.Columns["lastUpdatedBy"].HeaderText = "Aktualisiert von";
         }
         public int getNextNumber()
         {
@@ -181,6 +192,25 @@ namespace clientScheduler
             dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.AutoGenerateColumns = true;
             connection.Close();
+            if (lang == "de")
+            {
+                dataGridView2.Columns["appID"].HeaderText = "Termin-ID";
+                dataGridView2.Columns["customerID"].HeaderText = "Kunden-ID";
+                dataGridView2.Columns["userId"].HeaderText = "Benutzer-ID";
+                dataGridView2.Columns["title"].HeaderText = "Titel";
+                dataGridView2.Columns["description"].HeaderText = "Beschreibung";
+                dataGridView2.Columns["contact"].HeaderText = "Kontakt";
+                dataGridView2.Columns["url"].HeaderText = "URL";
+                dataGridView2.Columns["location"].HeaderText = "Standort";
+                dataGridView2.Columns["type"].HeaderText = "Typ";
+                dataGridView2.Columns["date"].HeaderText = "Datum";
+                dataGridView2.Columns["start"].HeaderText = "Startzeit";
+                dataGridView2.Columns["end"].HeaderText = "Endzeit";
+                dataGridView2.Columns["createDate"].HeaderText = "Erstellungsdatum";
+                dataGridView2.Columns["createdBy"].HeaderText = "Erstellt von";
+                dataGridView2.Columns["lastUpdate"].HeaderText = "Letzte Aktualisierung";
+                dataGridView2.Columns["updatedBy"].HeaderText = "Aktualisiert von";
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

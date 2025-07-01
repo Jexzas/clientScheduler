@@ -61,7 +61,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(690, 19);
+            label1.Location = new Point(525, 9);
             label1.Name = "label1";
             label1.Size = new Size(206, 39);
             label1.TabIndex = 0;
@@ -74,7 +74,7 @@
             dataGridView1.Location = new Point(33, 71);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1541, 211);
+            dataGridView1.Size = new Size(1244, 211);
             dataGridView1.TabIndex = 1;
             dataGridView1.DataBindingComplete += dataGridView1_DataBindingComplete;
             dataGridView1.Click += rowSelected;
@@ -212,7 +212,7 @@
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Location = new Point(690, 337);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(884, 386);
+            dataGridView2.Size = new Size(587, 386);
             dataGridView2.TabIndex = 17;
             dataGridView2.CellContentClick += dataGridView2_CellContentClick;
             dataGridView2.CellMouseDoubleClick += shortcutApt;
@@ -221,7 +221,7 @@
             // 
             label10.AutoSize = true;
             label10.ForeColor = Color.Black;
-            label10.Location = new Point(1068, 293);
+            label10.Location = new Point(912, 293);
             label10.Name = "label10";
             label10.Size = new Size(201, 25);
             label10.TabIndex = 18;
@@ -263,7 +263,7 @@
             // 
             AutoScaleDimensions = new SizeF(12F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1607, 757);
+            ClientSize = new Size(1305, 757);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);

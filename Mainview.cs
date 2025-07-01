@@ -45,6 +45,23 @@ namespace clientScheduler
                 label1.Text = "Wilkommen";
                 button1.Text = "Kunden Verwalten";
                 button2.Text = "Termine Verwalten";
+                button3.Text = "Reporte";
+                dataGridView1.Columns["appID"].HeaderText = "Termin-ID";
+                dataGridView1.Columns["customerID"].HeaderText = "Kunden-ID";
+                dataGridView1.Columns["userId"].HeaderText = "Benutzer-ID";
+                dataGridView1.Columns["title"].HeaderText = "Titel";
+                dataGridView1.Columns["description"].HeaderText = "Beschreibung";
+                dataGridView1.Columns["contact"].HeaderText = "Kontakt";
+                dataGridView1.Columns["url"].HeaderText = "URL";
+                dataGridView1.Columns["location"].HeaderText = "Standort";
+                dataGridView1.Columns["type"].HeaderText = "Typ";
+                dataGridView1.Columns["date"].HeaderText = "Datum";
+                dataGridView1.Columns["start"].HeaderText = "Startzeit";
+                dataGridView1.Columns["end"].HeaderText = "Endzeit";
+                dataGridView1.Columns["createDate"].HeaderText = "Erstellungsdatum";
+                dataGridView1.Columns["createdBy"].HeaderText = "Erstellt von";
+                dataGridView1.Columns["lastUpdate"].HeaderText = "Letzte Aktualisierung";
+                dataGridView1.Columns["updatedBy"].HeaderText = "Aktualisiert von";
             }
             checkIfAppt();
         }

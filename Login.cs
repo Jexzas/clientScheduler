@@ -25,7 +25,12 @@ public partial class Login : Form
             lang = "Deutsch (DE)";
             radioButton2.Checked = true;
         }
-
+        // Automatically make it German if your location is Germany despite that not being in the listed requirements, Germany isn't the only German speaking country, and half of Germans speak English so there's no guarantee.
+        if (locality == "DEU")
+        {
+            lang = "Deutsch (DE)";
+            radioButton2.Checked = true;
+        }
         connection = Program.connect();
     }
 
