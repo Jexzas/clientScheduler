@@ -35,6 +35,7 @@ partial class Login
         label2 = new Label();
         radioButton1 = new RadioButton();
         radioButton2 = new RadioButton();
+        label3 = new Label();
         SuspendLayout();
         // 
         // button1
@@ -66,7 +67,7 @@ partial class Login
         // label1
         // 
         label1.AutoSize = true;
-        label1.Location = new Point(351, 294);
+        label1.Location = new Point(351, 336);
         label1.Name = "label1";
         label1.Size = new Size(48, 15);
         label1.TabIndex = 4;
@@ -75,7 +76,7 @@ partial class Login
         // label2
         // 
         label2.AutoSize = true;
-        label2.Location = new Point(337, 342);
+        label2.Location = new Point(335, 361);
         label2.Name = "label2";
         label2.Size = new Size(108, 15);
         label2.TabIndex = 5;
@@ -106,11 +107,22 @@ partial class Login
         radioButton2.UseVisualStyleBackColor = true;
         radioButton2.CheckedChanged += radioButton2_CheckedChanged;
         // 
+        // label3
+        // 
+        label3.AutoSize = true;
+        label3.Location = new Point(261, 311);
+        label3.Name = "label3";
+        label3.Size = new Size(64, 15);
+        label3.TabIndex = 8;
+        label3.Text = "Time Zone";
+        label3.Click += label3_Click;
+        // 
         // Login
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(800, 450);
+        Controls.Add(label3);
         Controls.Add(radioButton2);
         Controls.Add(radioButton1);
         Controls.Add(label2);
@@ -133,4 +145,5 @@ partial class Login
     private Label label2;
     private RadioButton radioButton1;
     private RadioButton radioButton2;
+    private Label label3;
 }

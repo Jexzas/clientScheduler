@@ -19,13 +19,13 @@ public partial class Login : Form
         InitializeComponent();
 
         label1.Text = $"Region: {locality}";
+        label3.Text = $"Time Zone: {TimeZoneInfo.Local.ToString()}";
         // Language Controls
-        if (System.Globalization.CultureInfo.CurrentCulture.Name == "de")
+        if (System.Globalization.CultureInfo.CurrentUICulture.Name == "de-DE")
         {
             lang = "Deutsch (DE)";
             radioButton2.Checked = true;
         }
-        // Automatically make it German if your location is Germany despite that not being in the listed requirements, Germany isn't the only German speaking country, and half of Germans speak English so there's no guarantee.
         if (locality == "DEU")
         {
             lang = "Deutsch (DE)";
@@ -56,7 +56,7 @@ public partial class Login : Form
     }
     private void button1_Click_1(object sender, EventArgs e)
     {
-        handleLogin(textBox1.Text,  textBox2.Text, this.lang);
+        handleLogin(textBox1.Text, textBox2.Text, this.lang);
     }
 
     private void handleLogin(string username, string password, string lang)
@@ -135,5 +135,10 @@ public partial class Login : Form
     private void radioButton2_CheckedChanged(object sender, EventArgs e)
     {
         changeLang("de");
+    }
+
+    private void label3_Click(object sender, EventArgs e)
+    {
+
     }
 }
