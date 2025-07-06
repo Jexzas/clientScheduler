@@ -187,9 +187,9 @@
             label8.AutoSize = true;
             label8.Location = new Point(400, 407);
             label8.Name = "label8";
-            label8.Size = new Size(69, 25);
+            label8.Size = new Size(213, 25);
             label8.TabIndex = 13;
-            label8.Text = "Phone";
+            label8.Text = "Phone (No Area Code)";
             // 
             // numericUpDown3
             // 
@@ -221,7 +221,7 @@
             // 
             label10.AutoSize = true;
             label10.ForeColor = Color.Black;
-            label10.Location = new Point(912, 293);
+            label10.Location = new Point(882, 293);
             label10.Name = "label10";
             label10.Size = new Size(201, 25);
             label10.TabIndex = 18;

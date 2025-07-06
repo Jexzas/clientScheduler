@@ -322,10 +322,10 @@ namespace clientScheduler
                                     MessageBox.Show("Invalid characters in postal code.");
                                     return true;
                                 case "length78":
-                                    MessageBox.Show("A phone number can only be seven or eight characters incluing a hyphen.");
+                                    MessageBox.Show("A phone number can only be seven or eight characters including a hyphen. This does NOT include the area code. (The provided database does not support 10-digit numbers.)");
                                     return true;
                                 case "hasPhoneChars":
-                                    MessageBox.Show("Phone number must include numbers only except for hyphen.");
+                                    MessageBox.Show("Phone number must include numbers only except for hyphen. Do NOT include the area code.");
                                     return true;
                             }
                         }
