@@ -292,10 +292,10 @@ namespace clientScheduler
                                     MessageBox.Show("Die Postleitzahl enthält ungültige Zeichen.");
                                     return true;
                                 case "length78":
-                                    MessageBox.Show("Die Telefonnummer muss sieben oder acht Zeichen enthalten, inklusive Bindestrich.");
+                                    MessageBox.Show("Die Telefonnummer muss sieben oder acht Zeichen enthalten, inklusive Bindestrich. Die Vorwahl NICHT angeben.");
                                     return true;
                                 case "hasPhoneChars":
-                                    MessageBox.Show("Die Telefonnummer darf nur Ziffern und Bindestriche enthalten.");
+                                    MessageBox.Show("Die Telefonnummer darf nur Ziffern und Bindestriche enthalten. Die Vorwahl NICHT angeben.");
                                     return true;
                             }
                         }

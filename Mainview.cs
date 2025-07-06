@@ -156,9 +156,9 @@ namespace clientScheduler
 
         private void button3_Click(object sender, EventArgs e)
         {
-            getYourAppts(OffsetDifference);
             Reports reports = new Reports(MyAppointments, this.userID, this.lang);
             reports.ShowDialog();
+
         }
     }
 }

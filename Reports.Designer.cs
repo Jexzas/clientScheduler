@@ -62,7 +62,7 @@
             button2.Name = "button2";
             button2.Size = new Size(534, 80);
             button2.TabIndex = 2;
-            button2.Text = "Each User's Appointments";
+            button2.Text = "Each User's Future Appointments";
             button2.UseMnemonic = false;
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
