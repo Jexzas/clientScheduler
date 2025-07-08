@@ -237,18 +237,18 @@ namespace clientScheduler
                     }
                     return true;
                 }
-                    // name validate
-                    bool hasSpecialChars = Regex.IsMatch(textBox1.Text, @"[^a-zA-Z0-9 '-]");
-                bool lengthGreater2 = textBox1.Text.Length <= 2;
+                // name validate
+                bool hasSpecialChars = Regex.IsMatch(textBox1.Text,  @"^[a-zA-Z'-]+$"); // true if good
+                bool lengthGreater2 = textBox1.Text.Length > 2; // true if good
                 // address
-                bool lengthGreater7 = textBox2.Text.Length <= 7;
-                bool hasAddChars = Regex.IsMatch(textBox2.Text, @"[^a-zA-Z0-9 .,!?#']");
+                bool lengthGreater7 = textBox2.Text.Length > 7; // true if good
+                bool hasAddChars = Regex.IsMatch(textBox2.Text, @"^[a-zA-Z0-9 .,!?#']+$"); // true if good
                 // postal
-                bool length5 = textBox3.Text.Length != 5;
-                bool hasZipChars = Regex.IsMatch(textBox3.Text, @"^0-9");
+                bool length5 = textBox3.Text.Length == 5; // true if good
+                bool hasZipChars = Regex.IsMatch(textBox3.Text, @"^[0-9]+$"); // true if good
                 // phone
-                bool length78 = textBox4.Text.Length < 7 && textBox4.Text.Length > 8;
-                bool hasPhoneChars = Regex.IsMatch(textBox4.Text, @"^[0-9\-]+$");
+                bool length78 = textBox4.Text.Length <= 8 && textBox4.Text.Length >= 7; // true if good
+                bool hasPhoneChars = Regex.IsMatch(textBox4.Text, @"^[0-9\-]+$"); // true if good
                 var fieldChecks = new List<(bool failed, string code)>
                 {
                     (hasSpecialChars, "hasSpecialChars"),
@@ -260,9 +260,9 @@ namespace clientScheduler
                     (length78, "length78"),
                     (hasPhoneChars, "hasPhoneChars")
                 }; 
-                foreach ((bool failed, string code) in fieldChecks)
+                foreach ((bool valid, string code) in fieldChecks)
                 {
-                    if (failed == false)
+                    if (valid == true)
                     {
                         continue;
                     }

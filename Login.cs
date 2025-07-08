@@ -99,13 +99,27 @@ public partial class Login : Form
             reader2.Close();
             if (!isUser)
             {
-                MessageBox.Show("This user doesn't exist.");
+                if (codeLang == "en")
+                {
+                    MessageBox.Show("This user doesn't exist.");
+                }
+                else
+                {
+                    MessageBox.Show("Dieser Benutzer existiert nicht.");
+                }
             }
             else
             {
                 if (!isPass)
                 {
-                    MessageBox.Show("The password is incorrect.");
+                    if (codeLang == "en")
+                    {
+                        MessageBox.Show("The password is incorrect.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Das Passwort ist falsch.");
+                    }
                 }
             }
 
