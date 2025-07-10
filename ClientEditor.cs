@@ -460,10 +460,10 @@ namespace clientScheduler
             numericUpDown1.Value = nextNum;
             textBox1.Text = "";
             textBox2.Text = "";
-            numericUpDown2.Value = 0;
+            numericUpDown2.Value = numericUpDown2.Minimum;
             textBox3.Text = "";
             textBox4.Text = "";
-            numericUpDown3.Value = 0;
+            numericUpDown3.Value = numericUpDown3.Minimum;
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
