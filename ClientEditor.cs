@@ -238,10 +238,10 @@ namespace clientScheduler
                     return true;
                 }
                 // name validate
-                bool hasSpecialChars = Regex.IsMatch(textBox1.Text,  @"^[a-zA-Z'-]+$"); // true if good
+                bool hasSpecialChars = Regex.IsMatch(textBox1.Text,  @"^[a-zA-Z' -]+$"); // true if good
                 bool lengthGreater2 = textBox1.Text.Length > 2; // true if good
                 // address
-                bool lengthGreater7 = textBox2.Text.Length > 7; // true if good
+                bool lengthGreater7 = textBox2.Text.Length >= 5; // true if good
                 bool hasAddChars = Regex.IsMatch(textBox2.Text, @"^[a-zA-Z0-9 .,!?#']+$"); // true if good
                 // postal
                 bool length5 = textBox3.Text.Length == 5; // true if good

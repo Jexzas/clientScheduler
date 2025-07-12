@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tqU/lkpcIbM=",
+  "dgSpecHash": "+1IFyUXk4lw=",
   "success": true,
-  "projectFilePath": "D:\\dev\\clientScheduler\\clientScheduler.csproj",
+  "projectFilePath": "D:\\Programming\\clientScheduler\\clientScheduler.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jdrma\\.nuget\\packages\\bouncycastle.cryptography\\2.5.1\\bouncycastle.cryptography.2.5.1.nupkg.sha512",
     "C:\\Users\\jdrma\\.nuget\\packages\\google.protobuf\\3.30.0\\google.protobuf.3.30.0.nupkg.sha512",
